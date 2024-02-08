@@ -1,0 +1,14 @@
+.shopping-cart {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100%;
+  width: 25%;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  transition: right 0.3s ease;
+}
+
+.shopping-cart.slide-in {
+  right: 0;
+}
