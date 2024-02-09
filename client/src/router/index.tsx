@@ -1,31 +1,25 @@
-import { Fragment, Key, lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
-import EmptyLayout from "../layout/empty-layout";
-import HomeLayout from "../layout/home-layout";
-import { AuthGuard, ReversGuard } from "./guards";
+import { Fragment, Key, lazy, Suspense} from 'react';
+import { Route, Routes } from 'react-router-dom';
+import HomeLayout from '../layout/home-layout';
 
-import SuspenseScreen from "./suspense-screen";
+import SuspenseScreen from './suspense-screen';
+import React from 'react';
 // import AuthLayout from "../layout/auth-layout";
 // import useAuth from "../utils/context/auth-context";
 
 function Router() {
   const routes: any = [
     {
-      path: "/",
+      path: '/',
       layout: HomeLayout,
-      routes: [{ element: lazy(() => import("../pages/home")) }],
+      routes: [{ element: lazy(() => import('../pages/home')) }],
     },
     {
-      path: "/event-planner",
+      path: '/account',
       layout: HomeLayout,
-      routes: [{ element: lazy(() => import("../pages/event_planner")) }],
+      routes: [{ element: lazy(() => import('../pages/account')) }],
     },
-    {
-      path: "/av_providers",
-      layout: HomeLayout,
-      routes: [{ element: lazy(() => import("../pages/av_providers")) }],
-    },
-    { path: "*", element: lazy(() => import("./404")) },
+    { path: '*', element: lazy(() => import('./404')) },
 
     // {
     //   path: "/lesson",
@@ -59,16 +53,25 @@ function Router() {
     // },
   ];
 
-  const routeRender = (route: { element: any; guard: any; layout: any; path: string; routes: any[] }, i: Key | null | undefined) => {
+  const routeRender = (
+    route: {
+      element: any;
+      guard: any;
+      layout: any;
+      path: string;
+      routes: any[];
+    },
+    i: Key | null | undefined
+  ) => {
     const Element = route.element ? route.element : Fragment;
     const Guard = route.guard ? route.guard : Fragment;
     const Layout = route.layout ? route.layout : Fragment;
     const isIndex: boolean = route.path ? false : true;
     let props: any = {};
     if (isIndex) {
-      props["index"] = true;
+      props['index'] = true;
     } else {
-      props["path"] = route.path;
+      props['path'] = route.path;
     }
     return (
       <Route

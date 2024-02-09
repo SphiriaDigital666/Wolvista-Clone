@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import Stripe from 'stripe';
 import { Request, Response } from 'express';
 import { generateToken } from '../helpers';
 import {
@@ -6,6 +7,20 @@ import {
   getUserByEmail,
   getUserByRefreshToken,
 } from '../models/user/user.model';
+
+
+const stripe = new Stripe(
+  'sk_test_51OhuhHGp1WWvZ4zJMo1AuVKv157cvWMyHSi9g1m6SCcJskrRO9FZNQo1q42lSbNQVmZE2He1zKgbxDHcyyeuQJ5D001TJtBwkS',
+  {
+    apiVersion: '2023-10-16',
+    appInfo: {
+      // For sample support and debugging, not required for production:
+      name: 'stripe-samples/subscription-use-cases/fixed-price',
+      version: '0.0.1',
+      url: 'https://github.com/stripe-samples/subscription-use-cases/fixed-price',
+    },
+  }
+);
 
 /* 
 ?@desc   Register a user
@@ -30,9 +45,9 @@ export const register = async (req: Request, res: Response) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // const customer = await stripe.customers.create({
-    //   email: req.body.email,
-    // });
+    const customer = await stripe.customers.create({
+      email: req.body.email,
+    });
 
     const user = await createUser({
       email,
@@ -40,7 +55,7 @@ export const register = async (req: Request, res: Response) => {
       // subscription: {
       //   plan: 'BASIC',
       //   startDate: new Date(),
-      //   customerId: customer.id
+        customerId: customer.id
       // }
     });
     return res.status(200).json(user);
