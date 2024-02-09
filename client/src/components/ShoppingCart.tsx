@@ -5,6 +5,7 @@ import "./ShoppingCart.css"; // Import the CSS file for styling
 import { MdVerified } from "react-icons/md";
 
 import { MdClear } from "react-icons/md";
+import { MdAddShoppingCart } from "react-icons/md";
 
 interface ProductDetails {
   id: number;
@@ -185,14 +186,21 @@ const ShoppingCart: React.FC = () => {
                 <MdClear className="text-[#fff] text-[26px]" />
               </div>
             </button>
-            <h2 className="text-center mb-8 text-[#fff]">
-              Shopping Cart{" "}
-              {cartTotal > 0 && (
-                <span className="bg-red-500 text-white rounded-full px-2 ml-2">
-                  {cartTotal}
-                </span>
-              )}
-            </h2>
+
+            <div>
+              <div className="flex items-center justify-center gap-6  mb-8">
+                <h2 className="text-center  text-[#fff] text-[35px]">
+                  Shopping Cart
+                </h2>
+                <div className="relative">
+                  <MdAddShoppingCart className="text-[#fff] text-[35px] " />
+                  <div className="text-[#000] bg-[#fff] p-2 rounded-full h-5 w-5 flex justify-center items-center absolute bottom-[-12px] right-[-10px] font-medium">
+                    {cartTotal > 0 && <span>{cartTotal}</span>}
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {cart.map((item) => (
               <CartItem
                 key={item.id}
