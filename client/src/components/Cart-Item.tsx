@@ -24,7 +24,7 @@ const CartItem: React.FC<CartItemProps> = ({
 
   return (
     <div>
-      <div className="flex justify-end">
+      <div className="flex justify-end border-t-2 border-[#16151a]">
         <button onClick={() => onDelete(id)}>
           {" "}
           <MdClear className="text-[#fff] text-[26px] mb-2 mt-2" />
