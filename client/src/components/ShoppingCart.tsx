@@ -194,7 +194,7 @@ const ShoppingCart: React.FC = () => {
                 </h2>
                 <div className="relative">
                   <MdAddShoppingCart className="text-[#fff] text-[35px] " />
-                  <div className="text-[#000] bg-[#fff] p-2 rounded-full h-5 w-5 flex justify-center items-center absolute bottom-[-12px] right-[-10px] font-medium">
+                  <div className="text-[#000] bg-[#22c9f2] p-2 rounded-full h-5 w-5 flex justify-center items-center absolute bottom-[-12px] right-[-10px] font-medium">
                     {cartTotal > 0 && <span>{cartTotal}</span>}
                   </div>
                 </div>
@@ -227,7 +227,10 @@ const ShoppingCart: React.FC = () => {
               </div>
 
               <div className="flex justify-end mb-4">
-                <button onClick={handleApplyCoupon} className="text-[#ececec]">
+                <button
+                  onClick={handleApplyCoupon}
+                  className="text-[#ececec] border-2 border-[#22c9f2] rounded px-2 py-0.5"
+                >
                   Apply Coupon
                 </button>
               </div>
@@ -243,9 +246,9 @@ const ShoppingCart: React.FC = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <p className="text-[#ececec]">Subtotal: </p>
+              <p className="text-[#ececec] text-[20px] uppercase">Subtotal </p>
 
-              <p className="text-[#ececec]">
+              <p className="text-[#ececec] text-[20px]">
                 $
                 {cart
                   .reduce(
@@ -263,9 +266,13 @@ const ShoppingCart: React.FC = () => {
               </div>
             )}
             <div className="flex justify-between">
-              <p className="text-[#ececec]">Discounted Subtotal:</p>
+              <p className="text-[#ececec] text-[20px] uppercase">
+                Discounted Subtotal:
+              </p>
 
-              <p className="text-[#ececec]">${discountedSubtotal.toFixed(2)}</p>
+              <p className="text-[#ececec] text-[20px]">
+                ${discountedSubtotal.toFixed(2)}
+              </p>
             </div>
           </div>
         </div>

@@ -48,8 +48,13 @@ const CartItem: React.FC<CartItemProps> = ({
           >
             -
           </button>
-          {/* <span>{quantity}</span> */}
-          <button onClick={() => handleQuantityChange(quantity + 1)}>+</button>
+          <span>{quantity}</span>
+          <button
+            className="pl-3"
+            onClick={() => handleQuantityChange(quantity + 1)}
+          >
+            +
+          </button>
         </div>
       </div>
     </div>
