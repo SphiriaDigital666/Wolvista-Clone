@@ -11,7 +11,6 @@ const ShoppingCart: React.FC = () => {
   const {
     cart,
     couponCode,
-    cartTotal,
     discount,
     couponMessage,
     showCart,
@@ -68,7 +67,7 @@ const ShoppingCart: React.FC = () => {
                 <div className='relative'>
                   <MdAddShoppingCart className='text-[#fff] text-[35px] ' />
                   <div className='text-[#000] bg-[#22c9f2] p-2 rounded-full h-5 w-5 flex justify-center items-center absolute bottom-[-12px] right-[-10px] font-medium'>
-                    {cartTotal > 0 && <span>{cartTotal}</span>}
+                    {cart.length > 0 && <span>{cart.length}</span>}
                   </div>
                 </div>
               </div>
@@ -155,6 +154,10 @@ const ShoppingCart: React.FC = () => {
             >
               Checkout
             </button>
+            {/* <stripe-buy-button
+              buy-button-id='buy_btn_1OhzJXGp1WWvZ4zJisjPKNja'
+              publishable-key='pk_test_51OhuhHGp1WWvZ4zJ8BpJu2VOQZPLw3SHMFBCED97YHKfhXCfbomMfigIOpcsuCdTTkGmiJiDX8yYrBCXIqSZTbK500Uqsjs82L'
+            ></stripe-buy-button> */}
           </div>
         </div>
       </div>

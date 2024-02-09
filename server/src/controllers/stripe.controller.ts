@@ -53,6 +53,7 @@ export const createCheckout = async(req:Request, res:Response)=>{
       price: item.id,
       quantity: item.quantity,
     })),
+    allow_promotion_codes:true,
     success_url:
       'http://localhost:3000/account/session_id={CHECKOUT_SESSION_ID}',
     cancel_url: 'http://localhost:3000',
