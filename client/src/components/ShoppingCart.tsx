@@ -6,7 +6,6 @@ import './ShoppingCart.css'; // Import the CSS file for styling
 
 import { MdAddShoppingCart, MdClear } from 'react-icons/md';
 import { useShoppingCartStore } from '../store/shoppingCartStore';
-import api from '../utils/api';
 
 const ShoppingCart: React.FC = () => {
   const {
@@ -26,7 +25,6 @@ const ShoppingCart: React.FC = () => {
     handleCheckout,
     setShowCart,
   } = useShoppingCartStore();
-  console.log('🚀 ~ cart:', cart);
 
   useEffect(() => {
     fetchProducts();
@@ -35,16 +33,6 @@ const ShoppingCart: React.FC = () => {
   const discountedSubtotal =
     cart.reduce((total, item) => total + item.price * item.quantity, 0) -
     discount;
-
-  // const handleCheckout = async () => {
-  //   try {
-  //     await api.post('/stripe/checkout', {
-  //       cart
-  //     })
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <div className='container mx-auto '>
@@ -108,7 +96,6 @@ const ShoppingCart: React.FC = () => {
                   className='rounded'
                   value={couponCode}
                   onChange={(e) => {
-                    // setCouponCode(e.target.value);
                     handleCouponCodeChange(e.target.value);
                   }}
                 />
