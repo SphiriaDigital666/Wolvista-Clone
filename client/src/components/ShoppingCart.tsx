@@ -84,7 +84,7 @@ const ShoppingCart: React.FC = () => {
           </div>
 
           <div>
-            <div>
+            {/* <div>
               <div className='flex items-center justify-between mb-2'>
                 <label htmlFor='coupon' className='text-[#ececec]'>
                   Coupon Code:
@@ -117,7 +117,7 @@ const ShoppingCart: React.FC = () => {
                   </p>
                 </div>
               )}
-            </div>
+            </div> */}
 
             <div className='flex items-center justify-between'>
               <p className='text-[#ececec] text-[20px] uppercase'>Subtotal </p>
