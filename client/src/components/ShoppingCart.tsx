@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { MdVerified } from 'react-icons/md';
 import CartItem from './Cart-Item';
 import Product from './Product';
 import './ShoppingCart.css'; // Import the CSS file for styling
@@ -10,24 +9,24 @@ import { useShoppingCartStore } from '../store/shoppingCartStore';
 const ShoppingCart: React.FC = () => {
   const {
     cart,
-    couponCode,
+    // couponCode,
     discount,
-    couponMessage,
+    // couponMessage,
     showCart,
     products,
     fetchProducts,
     handleAddToCart,
     handleDeleteItem,
     handleQuantityChange,
-    handleCouponCodeChange,
-    handleApplyCoupon,
+    // handleCouponCodeChange,
+    // handleApplyCoupon,
     handleCheckout,
     setShowCart,
   } = useShoppingCartStore();
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
 
   const discountedSubtotal =
     cart.reduce((total, item) => total + item.price * item.quantity, 0) -
@@ -67,7 +66,7 @@ const ShoppingCart: React.FC = () => {
                 <div className='relative'>
                   <MdAddShoppingCart className='text-[#fff] text-[35px] ' />
                   <div className='text-[#000] bg-[#22c9f2] p-2 rounded-full h-5 w-5 flex justify-center items-center absolute bottom-[-12px] right-[-10px] font-medium'>
-                    {cart.length > 0 && <span>{cart.length}</span>}
+                    {cart.length === 0 ? 0 : <span>{cart.length}</span>}
                   </div>
                 </div>
               </div>
@@ -84,7 +83,7 @@ const ShoppingCart: React.FC = () => {
           </div>
 
           <div>
-            <div>
+            {/* <div>
               <div className='flex items-center justify-between mb-2'>
                 <label htmlFor='coupon' className='text-[#ececec]'>
                   Coupon Code:
@@ -117,7 +116,7 @@ const ShoppingCart: React.FC = () => {
                   </p>
                 </div>
               )}
-            </div>
+            </div> */}
 
             <div className='flex items-center justify-between'>
               <p className='text-[#ececec] text-[20px] uppercase'>Subtotal </p>
@@ -151,6 +150,7 @@ const ShoppingCart: React.FC = () => {
             <button
               className='bg-[#22c9f2] w-full rounded-lg p-3 text-white hover:cursor-pointer hover:bg-[#2690ab] mt-3'
               onClick={() => handleCheckout(cart)}
+              disabled={cart.length === 0}
             >
               Checkout
             </button>
