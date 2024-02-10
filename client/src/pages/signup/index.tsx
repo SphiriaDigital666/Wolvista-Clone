@@ -58,7 +58,7 @@ function AccountPage() {
 
           <Button className="w-full mb-4"> Sign Up</Button>
           <p className="w-full mb-4 text-[#5264d0] text-center">
-            Already a member? Sign in
+            Already a member? Sign in.
           </p>
         </div>
       </div>
