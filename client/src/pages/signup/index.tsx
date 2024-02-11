@@ -19,7 +19,27 @@ function AccountPage() {
             Sign in to your account
           </p>
           <div className="mb-8">
-            <Input label="Username" crossOrigin="" />
+            <Input
+              label="First Name"
+              crossOrigin=""
+              className="bg-[#262e49] !important"
+            />
+          </div>
+
+          <div className="mb-8">
+            <Input
+              label="Last Name"
+              crossOrigin=""
+              className="bg-[#262e49] !important"
+            />
+          </div>
+
+          <div className="mb-8">
+            <Input
+              label="Email"
+              crossOrigin=""
+              className="bg-[#262e49] !important"
+            />
           </div>
 
           <div className="mb-2">
@@ -36,9 +56,9 @@ function AccountPage() {
             <p className="text-[#5264d0]">Forget Password</p>
           </div>
 
-          <Button className="w-full mb-4"> Sign in</Button>
-          <p className="w-full mb-4 text-[#5264d0]">
-            Don't have an account? Sign Up.
+          <Button className="w-full mb-4"> Sign Up</Button>
+          <p className="w-full mb-4 text-[#5264d0] text-center">
+            Already a member? Sign in.
           </p>
         </div>
       </div>
