@@ -1,31 +1,39 @@
-import { Fragment, Key, lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
-import HomeLayout from "../layout/home-layout";
+import { Fragment, Key, lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import HomeLayout from '../layout/home-layout';
 
-import SuspenseScreen from "./suspense-screen";
-import React from "react";
+import SuspenseScreen from './suspense-screen';
+import React from 'react';
+import SubscriptionAndAuthWrapper from './guards/SubscriptionAndAuthWrapper';
+import RequireAuth from './guards/require-auth';
 // import AuthLayout from "../layout/auth-layout";
 // import useAuth from "../utils/context/auth-context";
 
 function Router() {
   const routes: any = [
     {
-      path: "/",
+      path: '/',
       layout: HomeLayout,
-      routes: [{ element: lazy(() => import("../pages/home")) }],
+      routes: [{ element: lazy(() => import('../pages/sign-in')) }],
     },
     {
-      path: "/account",
+      path: '/sign-up',
       layout: HomeLayout,
-      routes: [{ element: lazy(() => import("../pages/account")) }],
+      routes: [{ element: lazy(() => import('../pages/sign-up')) }],
     },
-
     {
-      path: "/signup",
+      path: '/account',
       layout: HomeLayout,
-      routes: [{ element: lazy(() => import("../pages/signup")) }],
+      guard: SubscriptionAndAuthWrapper,
+      routes: [{ element: lazy(() => import('../pages/account')) }],
     },
-    { path: "*", element: lazy(() => import("./404")) },
+    {
+      path: '/plans',
+      layout: HomeLayout,
+      guard: RequireAuth,
+      routes: [{ element: lazy(() => import('../pages/plans')) }],
+    },
+    { path: '*', element: lazy(() => import('./404')) },
 
     // {
     //   path: "/lesson",
@@ -75,9 +83,9 @@ function Router() {
     const isIndex: boolean = route.path ? false : true;
     let props: any = {};
     if (isIndex) {
-      props["index"] = true;
+      props['index'] = true;
     } else {
-      props["path"] = route.path;
+      props['path'] = route.path;
     }
     return (
       <Route

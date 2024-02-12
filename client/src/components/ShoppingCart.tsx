@@ -5,6 +5,7 @@ import './ShoppingCart.css'; // Import the CSS file for styling
 
 import { MdAddShoppingCart, MdClear } from 'react-icons/md';
 import { useShoppingCartStore } from '../store/shoppingCartStore';
+import { useAuthStore } from '../store/authStore';
 
 const ShoppingCart: React.FC = () => {
   const {
@@ -22,7 +23,12 @@ const ShoppingCart: React.FC = () => {
     // handleApplyCoupon,
     handleCheckout,
     setShowCart,
+    clearCart
   } = useShoppingCartStore();
+
+  const {  user } = useAuthStore();
+  const customerId = user.customerId
+
 
   useEffect(() => {
     fetchProducts();
@@ -31,6 +37,10 @@ const ShoppingCart: React.FC = () => {
   const discountedSubtotal =
     cart.reduce((total, item) => total + item.price * item.quantity, 0) -
     discount;
+
+    const handleSuccessfulCheckout = () => {
+      clearCart();
+    };
 
   return (
     <div className='container mx-auto '>
@@ -149,7 +159,9 @@ const ShoppingCart: React.FC = () => {
             </div>
             <button
               className='bg-[#22c9f2] w-full rounded-lg p-3 text-white hover:cursor-pointer hover:bg-[#2690ab] mt-3'
-              onClick={() => handleCheckout(cart)}
+              onClick={() =>
+                handleCheckout(cart, customerId, handleSuccessfulCheckout)
+              }
               disabled={cart.length === 0}
             >
               Checkout
