@@ -12,12 +12,17 @@ interface ShoppingCartStore {
   showCart: boolean;
   products: any;
   fetchProducts: () => void;
+  clearCart: () => void;
   handleAddToCart: (id: number) => void;
   handleDeleteItem: (id: number) => void;
   handleQuantityChange: (id: number, newQuantity: number) => void;
   handleApplyCoupon: () => void;
   handleCouponCodeChange: (value: string) => void;
-  handleCheckout: (cart: []) => void;
+  handleCheckout: (
+    cart: [],
+    customerId: string,
+    onSuccess?: () => void
+  ) => void;
   setShowCart: (value: boolean) => void;
 }
 
@@ -117,6 +122,9 @@ export const useShoppingCartStore = create<ShoppingCartStore>(
       handleCouponCodeChange: (newCouponCode: string) => {
         set({ couponCode: newCouponCode });
       },
+      clearCart: () => {
+        set({ cart: [] });
+      },
       handleApplyCoupon: () => {
         set((state) => {
           if (state.couponCode === '#wolvista5') {
@@ -135,11 +143,19 @@ export const useShoppingCartStore = create<ShoppingCartStore>(
           }
         });
       },
-      handleCheckout: async (cart: []) => {
+      handleCheckout: async (
+        cart: [],
+        customerId: string,
+        onSuccess?: () => void
+      ) => {
         try {
           const response = await api.post('/stripe/checkout', {
             cart,
+            customerId,
           });
+           if (onSuccess) {
+             onSuccess();
+           }
           window.location.replace(response.data);
         } catch (error) {
           console.log(error);

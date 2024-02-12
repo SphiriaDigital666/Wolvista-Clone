@@ -1,18 +1,7 @@
-import { Request, Response } from 'express';
 import Stripe from 'stripe';
+import { stripe } from '../config/stripe';
+import { Request, Response } from 'express';
 
-const stripe = new Stripe(
-  'sk_test_51OhuhHGp1WWvZ4zJMo1AuVKv157cvWMyHSi9g1m6SCcJskrRO9FZNQo1q42lSbNQVmZE2He1zKgbxDHcyyeuQJ5D001TJtBwkS',
-  {
-    apiVersion: '2023-10-16',
-    appInfo: {
-      // For sample support and debugging, not required for production:
-      name: 'stripe-samples/subscription-use-cases/fixed-price',
-      version: '0.0.1',
-      url: 'https://github.com/stripe-samples/subscription-use-cases/fixed-price',
-    },
-  }
-);
 
 /* 
 ?@desc   Get config
@@ -45,7 +34,7 @@ export const getConfig = async (req:Request, res:Response) => {
 */
 
 export const createCheckout = async(req:Request, res:Response)=>{
-    const {cart} = req.body;
+    const { cart, customerId } = req.body;
 
   const session = await stripe.checkout.sessions.create({
     mode: 'subscription',
@@ -53,9 +42,10 @@ export const createCheckout = async(req:Request, res:Response)=>{
       price: item.id,
       quantity: item.quantity,
     })),
+    customer:customerId,
     allow_promotion_codes:true,
     success_url:
-      'http://localhost:3000/account/session_id={CHECKOUT_SESSION_ID}',
+      'http://localhost:3000/account?session_id={CHECKOUT_SESSION_ID}',
     cancel_url: 'http://localhost:3000',
   });
    res.send(session.url);
@@ -75,3 +65,43 @@ export const billingPortal = async(req:Request, res:Response)=>{
   });
   res.send(session.url);
 }
+
+/* 
+?@desc   Handle Webhook events
+*@route  Post /api/stripe/webhook
+*@access Public
+*/
+
+export const handleWebhookEvents = async (req: Request, res: Response) => {
+  // @ts-ignore
+  const payload = req['rawBody'] || ''; // Use rawBody instead of body
+  const sig = req.headers['stripe-signature'] as string;
+
+  try {
+    const event = stripe.webhooks.constructEvent(
+      payload,
+      sig,
+      process.env.STRIPE_ENDPOINT_SECRET
+    );
+
+    // Handle specific event type
+    switch (event.type) {
+      case 'checkout.session.completed':
+        const session = event.data.object as Stripe.Checkout.Session;
+        // Handle the subscription completion, update user plan or other necessary actions
+        // You can use session.customer, session.subscription, etc., to get relevant details
+        // Update user plan logic goes here
+        console.log(`Checkout session completed for ${session.customer}`);
+        break;
+      // Add more cases for other webhook events if needed
+
+      default:
+        console.log(`Unhandled event type: ${event.type}`);
+    }
+
+    res.json({ received: true });
+  } catch (err) {
+    console.error('Error handling webhook event:', err.message);
+    res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+};

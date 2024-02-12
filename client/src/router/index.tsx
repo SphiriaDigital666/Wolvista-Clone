@@ -1,9 +1,11 @@
-import { Fragment, Key, lazy, Suspense} from 'react';
+import { Fragment, Key, lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import HomeLayout from '../layout/home-layout';
 
 import SuspenseScreen from './suspense-screen';
 import React from 'react';
+import SubscriptionAndAuthWrapper from './guards/SubscriptionAndAuthWrapper';
+import RequireAuth from './guards/require-auth';
 // import AuthLayout from "../layout/auth-layout";
 // import useAuth from "../utils/context/auth-context";
 
@@ -12,12 +14,24 @@ function Router() {
     {
       path: '/',
       layout: HomeLayout,
-      routes: [{ element: lazy(() => import('../pages/home')) }],
+      routes: [{ element: lazy(() => import('../pages/sign-in')) }],
+    },
+    {
+      path: '/sign-up',
+      layout: HomeLayout,
+      routes: [{ element: lazy(() => import('../pages/sign-up')) }],
     },
     {
       path: '/account',
       layout: HomeLayout,
+      guard: SubscriptionAndAuthWrapper,
       routes: [{ element: lazy(() => import('../pages/account')) }],
+    },
+    {
+      path: '/plans',
+      layout: HomeLayout,
+      guard: RequireAuth,
+      routes: [{ element: lazy(() => import('../pages/plans')) }],
     },
     { path: '*', element: lazy(() => import('./404')) },
 
