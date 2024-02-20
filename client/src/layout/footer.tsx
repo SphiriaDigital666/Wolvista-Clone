@@ -26,16 +26,22 @@ export function Footer() {
           <div className="sm:col-span-3 md:col-span-1">
             <img src={LOGO} alt="" className="mx-auto" />
             <Link to="/av_providers">
-              <p className="text-sm text-center mt-4 sm:mb-8 md:mb-0">All Rights Reserved - 2023</p>
+              <p className="text-sm text-center mt-4 sm:mb-8 md:mb-0">
+                All Rights Reserved - 2023
+              </p>
             </Link>
           </div>
           <div className="sm:hidden md:inline-block md:col-span-2 lg:col-span-1"></div>
           {SITEMAP.map(({ title, links }, key) => (
             <div key={key} className="w-full">
-              <h4 className="mb-8 uppercase text-center md:text-left ">{title}</h4>
+              <h4 className="mb-8 uppercase text-center md:text-left ">
+                {title}
+              </h4>
               <ul className="space-y-4 text-center md:text-left ">
                 {links.map((link, key) => (
-                  <p className="hover:underline transition ease-in-out duration-300 cursor-pointer">{link}</p>
+                  <p className="hover:underline transition ease-in-out duration-300 cursor-pointer">
+                    {link}
+                  </p>
                 ))}
               </ul>
             </div>
