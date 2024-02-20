@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import CartItem from "./Cart-Item";
 import Product from "./Product";
 import "./ShoppingCart.css"; // Import the CSS file for styling
+import "./leaklight.css"; // Import the CSS file for styling
 
 import { MdAddShoppingCart, MdClear } from "react-icons/md";
 import { useShoppingCartStore } from "../store/shoppingCartStore";
@@ -44,7 +45,11 @@ const ShoppingCart: React.FC = () => {
   return (
     <div className="container mx-auto ">
       {/* --------------------------------------------------------  Main content starts here -------------------------------------------------------------------------------- */}
-      <h1>Product List</h1>
+      <h1 className="text-white">Product List</h1>
+      <div>
+        <div className="rainbow-gradient-circle"></div>
+        <div className="rainbow-gradient-circle theme-pink"></div>
+      </div>
 
       <div className="grid grid-cols-3 gap-y-16 ">
         {products.map((product) => (
@@ -69,7 +74,7 @@ const ShoppingCart: React.FC = () => {
 
             <div>
               <div className="flex items-center justify-center gap-6  mb-8">
-                <h2 className="text-center  text-[#fff] text-[35px]">
+                <h2 className="text-center  text-[#fff] text-[35px] font-bold">
                   Shopping Cart
                 </h2>
                 <div className="relative">
@@ -94,7 +99,7 @@ const ShoppingCart: React.FC = () => {
           <div>
             {/* <div>
               <div className='flex items-center justify-between mb-2'>
-                <label htmlFor='coupon' className='text-[#ececec]'>
+                <label htmlFor='coupon' className='text-[#fff]'>
                   Coupon Code:
                 </label>
                 <input
@@ -111,7 +116,7 @@ const ShoppingCart: React.FC = () => {
               <div className='flex justify-end mb-4'>
                 <button
                   onClick={handleApplyCoupon}
-                  className='text-[#ececec] border-2 border-[#22c9f2] rounded px-2 py-0.5'
+                  className='text-[#fff] border-2 border-[#22c9f2] rounded px-2 py-0.5'
                 >
                   Apply Coupon
                 </button>
@@ -128,9 +133,9 @@ const ShoppingCart: React.FC = () => {
             </div> */}
 
             <div className="flex items-center justify-between">
-              <p className="text-[#ececec] text-[20px] uppercase">Subtotal </p>
+              <p className="text-[#fff] text-[20px] uppercase">Subtotal </p>
 
-              <p className="text-[#ececec] text-[20px]">
+              <p className="text-[#fff] text-[20px]">
                 $
                 {cart
                   .reduce(
@@ -141,18 +146,18 @@ const ShoppingCart: React.FC = () => {
               </p>
             </div>
             {discount > 0 && (
-              <div className="text-[#ececec] flex justify-between">
+              <div className="text-[#fff] flex justify-between">
                 <p>Discount: $</p>
 
                 <p> {discount.toFixed(2)}</p>
               </div>
             )}
             <div className="flex justify-between">
-              <p className="text-[#ececec] text-[20px] uppercase">
+              <p className="text-[#fff] text-[20px] uppercase">
                 Discounted Subtotal:
               </p>
 
-              <p className="text-[#ececec] text-[20px]">
+              <p className="text-[#fff] text-[20px]">
                 ${discountedSubtotal.toFixed(2)}
               </p>
             </div>
