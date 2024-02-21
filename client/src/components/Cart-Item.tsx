@@ -24,7 +24,7 @@ const CartItem: React.FC<CartItemProps> = ({
 
   return (
     <div>
-      <div className="flex justify-end border-t-2 border-[#16151a]">
+      <div className="flex justify-end border-t-2 border-[#A39B9B]">
         <button onClick={() => onDelete(id)}>
           {" "}
           <MdClear className="text-[#fff] text-[26px] mb-2 mt-2" />
@@ -32,15 +32,15 @@ const CartItem: React.FC<CartItemProps> = ({
       </div>
 
       <div className="flex items-center justify-between">
-        <p className="text-[#ececec] text-[20px] mb-2">{name}</p>
-        <p className="text-[#ececec] text-[20px]">
+        <p className="text-[#fff] text-[20px] mb-2 font-bold">{name}</p>
+        <p className="text-[#fff] text-[20px]">
           ${(price * quantity).toFixed(2)}
         </p>
       </div>
 
       <div className="flex items-center justify-between mb-4">
-        <p className="text-[#898989] font-medium">Quantity: {quantity}</p>
-        <div className="bg-[#000] text-[#fff] px-2 py-[1px]">
+        <p className="text-[#fff] font-light">Quantity: {quantity}</p>
+        <div className="bg-[#13EAFD] text-[#000] px-2 py-[1px] font-semibold">
           <button
             className="pr-3"
             onClick={() => handleQuantityChange(quantity - 1)}
