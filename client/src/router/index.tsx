@@ -19,7 +19,7 @@ function Router() {
     },
     {
       path: "/sign-up",
-      layout: HomeLayout,
+      layout: EmptyLayout,
       routes: [{ element: lazy(() => import("../pages/sign-up")) }],
     },
     {
