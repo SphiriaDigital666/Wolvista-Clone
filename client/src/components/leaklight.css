@@ -1,0 +1,121 @@
+:root {
+  --color-primary: #5d4fca;
+  --color-primary-rgba: rgb(5, 157, 255);
+  --color-primary-rgba-2: rgba(5, 157, 255, 0.15);
+  --color-primary-alt: #059dff;
+  --color-primary-light: #059dff;
+  --color-primary-lightest: #059dff;
+  --color-secondary: #13eafd;
+  --color-tertiary: #13eafd;
+  --color-tertiary-alt: #6549d5;
+  --color-pink: #02d0ff;
+  --color-light-green: #5d4fca;
+  --color-primary-darker: #011827;
+  --color-tertiary-darker: #150b40;
+  --color-secondary-darker: #190301;
+  --color-light-green-darker: #001f27;
+  --color-pink-darker: #2f011d;
+  --color-heading: #ffffff;
+  --color-body: #acacac;
+  --color-dark: #060606;
+  --color-darker: rgba(6, 6, 6, 0.7);
+  --color-darkest: rgba(0, 0, 0, 0.3);
+  --color-black: #000000;
+  --color-black-off: rgba(0, 0, 0, 0.2);
+  --color-blacker: rgba(15, 15, 17, 0);
+  --color-blackest: #0f0f11;
+  --color-border: hsla(0, 0%, 100%, 0.1);
+  --color-lessdark: #1e1e1e;
+  --color-gray: #65676b;
+  --color-midgray: #878787;
+  --color-light: #e4e6ea;
+  --color-lighter: #ced0d4;
+  --color-lightest: #f0f2f5;
+  --color-white: #ffffff;
+  --color-white-off: rgba(255, 255, 255, 0.05);
+  --color-success: #3eb75e;
+  --color-danger: #ff0003;
+  --color-warning: #ff8f3c;
+  --color-info: #1ba2db;
+  --color-facebook: #3b5997;
+  --color-twitter: #1ba1f2;
+  --color-youtube: #ed4141;
+  --color-linkedin: #0077b5;
+  --color-pinterest: #e60022;
+  --color-instagram: #c231a1;
+  --color-vimeo: #00adef;
+  --color-twitch: #6441a3;
+  --color-discord: #7289da;
+  --color-extra01: #666666;
+  --color-extra02: #606770;
+  --color-extra03: #fbfbfd;
+  --color-extra04: #1a1a1a;
+  --color-extra05: #242424;
+  --color-extra06: #111424;
+  --border-width: 2px;
+  --radius-small: 6px;
+  --radius: 10px;
+  --radius-big: 16px;
+  --p-light: 300;
+  --p-regular: 400;
+  --p-medium: 500;
+  --p-semi-bold: 600;
+  --p-bold: 700;
+  --p-extra-bold: 800;
+  --p-black: 900;
+  --shadow-primary: 0 0 20px 5px rgba(251, 83, 67, 0.2);
+  --shadow-light: 1px 1px 6px rgba(0, 0, 0, 0.25);
+  --shadow-lighter: 4px 4px 20px 20px rgba(0, 0, 0, 0.01);
+  --transition: 0.3s;
+  --transition-transform: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+  --font-primary: "Inter", sans-serif;
+  --secondary-font: "Inter", sans-serif;
+  --font-awesome: "Font Awesome 5 Pro";
+  --font-size-b1: 18px;
+  --font-size-b2: 16px;
+  --font-size-b3: 14px;
+  --font-size-b4: 12px;
+
+  --h1: 56px;
+  --h2: 44px;
+  --h3: 36px;
+  --h4: 24px;
+  --h5: 18px;
+  --h6: 16px;
+}
+
+.rainbow-gradient-circle {
+  position: fixed;
+  left: -350px;
+  top: 250px;
+  right: auto;
+  bottom: auto;
+  z-index: 1;
+  width: 500px;
+  height: 500px;
+  border-radius: 1000px;
+  background-image: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-light-green)
+  );
+  opacity: 0.25;
+  -webkit-filter: blur(100px);
+  filter: blur(100px);
+}
+
+.rainbow-gradient-circle.theme-pink {
+  left: auto;
+  top: -350px;
+  right: -350px;
+  bottom: auto;
+  background-image: linear-gradient(
+    45deg,
+    var(--color-secondary),
+    var(--color-tertiary)
+  );
+  filter: blur(100px);
+}
+.testtext {
+  color: white;
+}

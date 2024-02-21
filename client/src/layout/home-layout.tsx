@@ -5,7 +5,7 @@ import { Footer } from "./footer";
 function HomeLayout() {
   return (
     <>
-      <main className="w-full h-screen overflow-auto">
+      <main className="w-full h-screen overflow-auto bg-[#060606]">
         <TopNav />
         <Outlet />
         {/* <Footer /> */}

@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import CartItem from './Cart-Item';
-import Product from './Product';
-import './ShoppingCart.css'; // Import the CSS file for styling
+import React, { useEffect } from "react";
+import CartItem from "./Cart-Item";
+import Product from "./Product";
+import "./ShoppingCart.css"; // Import the CSS file for styling
+import "./leaklight.css"; // Import the CSS file for styling
 
-import { MdAddShoppingCart, MdClear } from 'react-icons/md';
-import { useShoppingCartStore } from '../store/shoppingCartStore';
-import { useAuthStore } from '../store/authStore';
+import { MdAddShoppingCart, MdClear } from "react-icons/md";
+import { useShoppingCartStore } from "../store/shoppingCartStore";
+import { useAuthStore } from "../store/authStore";
 
 const ShoppingCart: React.FC = () => {
   const {
@@ -23,12 +24,11 @@ const ShoppingCart: React.FC = () => {
     // handleApplyCoupon,
     handleCheckout,
     setShowCart,
-    clearCart
+    clearCart,
   } = useShoppingCartStore();
 
-  const {  user } = useAuthStore();
-  const customerId = user.customerId
-
+  const { user } = useAuthStore();
+  const customerId = user.customerId;
 
   useEffect(() => {
     fetchProducts();
@@ -38,16 +38,20 @@ const ShoppingCart: React.FC = () => {
     cart.reduce((total, item) => total + item.price * item.quantity, 0) -
     discount;
 
-    const handleSuccessfulCheckout = () => {
-      clearCart();
-    };
+  const handleSuccessfulCheckout = () => {
+    clearCart();
+  };
 
   return (
-    <div className='container mx-auto '>
+    <div className="container mx-auto ">
       {/* --------------------------------------------------------  Main content starts here -------------------------------------------------------------------------------- */}
-      <h1>Product List</h1>
+      <h1 className="text-white">Product List</h1>
+      <div>
+        <div className="rainbow-gradient-circle"></div>
+        <div className="rainbow-gradient-circle theme-pink"></div>
+      </div>
 
-      <div className='grid grid-cols-3 gap-y-16 '>
+      <div className="grid grid-cols-3 gap-y-16 ">
         {products.map((product) => (
           <Product
             key={product.id}
@@ -58,24 +62,24 @@ const ShoppingCart: React.FC = () => {
       </div>
 
       {/* ------------------------------------------------------------ Shopping cart sidebar starts here ----------------------------------------------------------------------- */}
-      <div className={`shopping-cart ${showCart ? 'slide-in' : ''}`}>
-        <div className='flex flex-col  justify-between  h-full'>
+      <div className={`shopping-cart ${showCart ? "slide-in" : ""}`}>
+        <div className="flex flex-col  justify-between  h-full">
           <div>
-            <button className='mb-2' onClick={() => setShowCart(false)}>
-              <div className='bg-[#000]'>
-                {' '}
-                <MdClear className='text-[#fff] text-[26px]' />
+            <button className="mb-2" onClick={() => setShowCart(false)}>
+              <div className="bg-[#000]">
+                {" "}
+                <MdClear className="text-[#fff] text-[26px]" />
               </div>
             </button>
 
             <div>
-              <div className='flex items-center justify-center gap-6  mb-8'>
-                <h2 className='text-center  text-[#fff] text-[35px]'>
+              <div className="flex items-center justify-center gap-6  mb-8">
+                <h2 className="text-center  text-[#fff] text-[35px] font-bold">
                   Shopping Cart
                 </h2>
-                <div className='relative'>
-                  <MdAddShoppingCart className='text-[#fff] text-[35px] ' />
-                  <div className='text-[#000] bg-[#22c9f2] p-2 rounded-full h-5 w-5 flex justify-center items-center absolute bottom-[-12px] right-[-10px] font-medium'>
+                <div className="relative">
+                  <MdAddShoppingCart className="text-[#fff] text-[35px] " />
+                  <div className="text-[#000] bg-[#22c9f2] p-2 rounded-full h-5 w-5 flex justify-center items-center absolute bottom-[-12px] right-[-10px] font-medium">
                     {cart.length === 0 ? 0 : <span>{cart.length}</span>}
                   </div>
                 </div>
@@ -95,7 +99,7 @@ const ShoppingCart: React.FC = () => {
           <div>
             {/* <div>
               <div className='flex items-center justify-between mb-2'>
-                <label htmlFor='coupon' className='text-[#ececec]'>
+                <label htmlFor='coupon' className='text-[#fff]'>
                   Coupon Code:
                 </label>
                 <input
@@ -112,7 +116,7 @@ const ShoppingCart: React.FC = () => {
               <div className='flex justify-end mb-4'>
                 <button
                   onClick={handleApplyCoupon}
-                  className='text-[#ececec] border-2 border-[#22c9f2] rounded px-2 py-0.5'
+                  className='text-[#fff] border-2 border-[#22c9f2] rounded px-2 py-0.5'
                 >
                   Apply Coupon
                 </button>
@@ -128,10 +132,10 @@ const ShoppingCart: React.FC = () => {
               )}
             </div> */}
 
-            <div className='flex items-center justify-between'>
-              <p className='text-[#ececec] text-[20px] uppercase'>Subtotal </p>
+            <div className="flex items-center justify-between">
+              <p className="text-[#fff] text-[20px] uppercase">Subtotal </p>
 
-              <p className='text-[#ececec] text-[20px]'>
+              <p className="text-[#fff] text-[20px]">
                 $
                 {cart
                   .reduce(
@@ -142,23 +146,23 @@ const ShoppingCart: React.FC = () => {
               </p>
             </div>
             {discount > 0 && (
-              <div className='text-[#ececec] flex justify-between'>
+              <div className="text-[#fff] flex justify-between">
                 <p>Discount: $</p>
 
                 <p> {discount.toFixed(2)}</p>
               </div>
             )}
-            <div className='flex justify-between'>
-              <p className='text-[#ececec] text-[20px] uppercase'>
+            <div className="flex justify-between">
+              <p className="text-[#fff] text-[20px] uppercase">
                 Discounted Subtotal:
               </p>
 
-              <p className='text-[#ececec] text-[20px]'>
+              <p className="text-[#fff] text-[20px]">
                 ${discountedSubtotal.toFixed(2)}
               </p>
             </div>
             <button
-              className='bg-[#22c9f2] w-full rounded-lg p-3 text-white hover:cursor-pointer hover:bg-[#2690ab] mt-3'
+              className="bg-[#22c9f2] w-full rounded-lg p-3 text-white hover:cursor-pointer hover:bg-[#2690ab] mt-3"
               onClick={() =>
                 handleCheckout(cart, customerId, handleSuccessfulCheckout)
               }
