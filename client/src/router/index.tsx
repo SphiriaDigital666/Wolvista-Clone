@@ -1,6 +1,7 @@
 import { Fragment, Key, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import HomeLayout from "../layout/home-layout";
+import EmptyLayout from "../layout/empty-layout";
 
 import SuspenseScreen from "./suspense-screen";
 import React from "react";
@@ -13,7 +14,7 @@ function Router() {
   const routes: any = [
     {
       path: "/",
-      layout: HomeLayout,
+      layout: EmptyLayout,
       routes: [{ element: lazy(() => import("../pages/sign-in")) }],
     },
     {
