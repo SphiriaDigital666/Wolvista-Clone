@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import CartItem from "./Cart-Item";
 import Product from "./Product";
-import "./ShoppingCart.css"; // Import the CSS file for styling
-import "./leaklight.css"; // Import the CSS file for styling
+import "./ShoppingCart.css";
+import "./leaklight.css";
 
 import { MdAddShoppingCart, MdClear } from "react-icons/md";
 import { useShoppingCartStore } from "../store/shoppingCartStore";
