@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import CartItem from "./Cart-Item";
-import Product from "./Product";
-import "./ShoppingCart.css";
-import "./leaklight.css";
+import React, { useEffect } from 'react';
+import CartItem from './Cart-Item';
+import Product from './Product';
+import './ShoppingCart.css';
+import './leaklight.css';
 
-import { MdAddShoppingCart, MdClear } from "react-icons/md";
-import { useShoppingCartStore } from "../store/shoppingCartStore";
-import { useAuthStore } from "../store/authStore";
+import { MdAddShoppingCart, MdClear } from 'react-icons/md';
+import { useShoppingCartStore } from '../store/shoppingCartStore';
+import { useAuthStore } from '../store/authStore';
 
 const ShoppingCart: React.FC = () => {
   const {
@@ -43,15 +43,17 @@ const ShoppingCart: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto">
       {/* --------------------------------------------------------  Main content starts here -------------------------------------------------------------------------------- */}
-      <h1 className="text-white">Product List</h1>
       <div>
-        <div className="rainbow-gradient-circle"></div>
-        <div className="rainbow-gradient-circle theme-pink"></div>
+        <h1 className="text-white ml-5 md:ml-10">Product List</h1>
+        <div>
+          <div className="rainbow-gradient-circle"></div>
+          <div className="rainbow-gradient-circle theme-pink"></div>
+        </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-y-16 ">
+      <div className="flex flex-col p-2 w-[370px] md:w-full md:grid md:grid-cols-3 md:gap-y-16">
         {products.map((product) => (
           <Product
             key={product.id}
@@ -62,12 +64,12 @@ const ShoppingCart: React.FC = () => {
       </div>
 
       {/* ------------------------------------------------------------ Shopping cart sidebar starts here ----------------------------------------------------------------------- */}
-      <div className={`shopping-cart ${showCart ? "slide-in" : ""}`}>
+      <div className={`shopping-cart ${showCart ? 'slide-in' : ''} z-20`}>
         <div className="flex flex-col  justify-between  h-full">
           <div>
             <button className="mb-2" onClick={() => setShowCart(false)}>
               <div className="bg-[#000]">
-                {" "}
+                {' '}
                 <MdClear className="text-[#fff] text-[26px]" />
               </div>
             </button>
