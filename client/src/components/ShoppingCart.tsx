@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import CartItem from './Cart-Item';
-import Product from './Product';
-import './ShoppingCart.css';
-import './leaklight.css';
+import React, { useEffect } from "react";
+import CartItem from "./Cart-Item";
+import Product from "./Product";
+import "./ShoppingCart.css";
+import "./leaklight.css";
 
-import { MdAddShoppingCart, MdClear } from 'react-icons/md';
-import { useShoppingCartStore } from '../store/shoppingCartStore';
-import { useAuthStore } from '../store/authStore';
+import { MdAddShoppingCart, MdClear } from "react-icons/md";
+import { useShoppingCartStore } from "../store/shoppingCartStore";
+import { useAuthStore } from "../store/authStore";
 
 const ShoppingCart: React.FC = () => {
   const {
@@ -53,7 +53,7 @@ const ShoppingCart: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-col p-2 w-[370px] md:w-full md:grid md:grid-cols-3 md:gap-y-16">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1">
         {products.map((product) => (
           <Product
             key={product.id}
@@ -64,12 +64,12 @@ const ShoppingCart: React.FC = () => {
       </div>
 
       {/* ------------------------------------------------------------ Shopping cart sidebar starts here ----------------------------------------------------------------------- */}
-      <div className={`shopping-cart ${showCart ? 'slide-in' : ''} z-20`}>
+      <div className={`shopping-cart ${showCart ? "slide-in" : ""} z-20`}>
         <div className="flex flex-col justify-between h-full">
           <div>
             <button className="mb-2" onClick={() => setShowCart(false)}>
               <div className="bg-[#000]">
-                {' '}
+                {" "}
                 <MdClear className="text-[#fff] text-[26px]" />
               </div>
             </button>

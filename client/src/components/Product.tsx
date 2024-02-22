@@ -1,6 +1,6 @@
-import React from 'react';
-import './product.css';
-import CartIcon from '../assets/cart-icon-gradient.png';
+import React from "react";
+import "./product.css";
+import CartIcon from "../assets/cart-icon-gradient.png";
 
 interface ProductProps {
   item: any;
@@ -17,12 +17,18 @@ const Product: React.FC<ProductProps> = ({ item, onAddToCart }) => {
       </div> */}
 
       <div className="snip1265 flex justify-center">
-        <div className="plan ">
+        <div className="plan 2xl:w-[405px] xl:w-[350px] lg:w-[320px] md:w-[300px] sm:w-[280px] w-[400px] mb-16">
           <header>
             <i className="">
-              <img src={CartIcon} alt="" className="mx-auto" />
+              <img
+                src={CartIcon}
+                alt=""
+                className="2xl:w-[60px] xl:w-[50px] mx-auto"
+              />
             </i>
-            <h4 className="plan-title">{item.product.name}</h4>
+            <h4 className="plan-title text-[20px] 2xl:text-[20px] xl:text-[18px] lg:text-[16px]">
+              {item.product.name}
+            </h4>
             <div className="plan-cost">
               <span className="plan-price">
                 ${(item.unit_amount / 100).toFixed(2)}
