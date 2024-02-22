@@ -35,6 +35,13 @@ function Router() {
       routes: [{ element: lazy(() => import("../pages/plans")) }],
     },
 
+    {
+      path: "/billing",
+      layout: EmptyLayout,
+      guard: RequireAuth,
+      routes: [{ element: lazy(() => import("../pages/billing")) }],
+    },
+
     { path: "*", element: lazy(() => import("./404")) },
 
     // {
