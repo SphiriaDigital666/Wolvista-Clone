@@ -1,5 +1,12 @@
 import { Router } from 'express';
-import { billingPortal, createCheckout, getConfig, handleWebhookEvents } from '../controllers/stripe.controller';
+import {
+  billingPortal,
+  createCheckout,
+  getConfig,
+  handleWebhookEvents,
+  userSubscriptions,
+  createCustomerPortal
+} from '../controllers/stripe.controller';
 
 export default (router: Router) => {
   /**
@@ -30,4 +37,6 @@ export default (router: Router) => {
   router.post('/stripe/checkout', createCheckout);
   router.post('/stripe/billing', billingPortal);
   router.post('/stripe/webhook', handleWebhookEvents);
+  router.post('/stripe/subscriptions', userSubscriptions);
+  router.post('/stripe/portal', createCustomerPortal);
 };
