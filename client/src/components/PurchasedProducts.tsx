@@ -1,39 +1,59 @@
 import React from 'react';
-import './product.css';
 import CartIcon from '../assets/cart-icon-gradient.png';
+import api from '../utils/api';
+import './product.css';
 
 interface PurchasedProductProps {
   item: any;
+  customerId: string;
   //   onAddToCart: (id: number) => void;
 }
 
-const PurchasedProduct: React.FC<PurchasedProductProps> = ({ item }) => {
+const PurchasedProduct: React.FC<PurchasedProductProps> = ({
+  item,
+  customerId,
+}) => {
+  console.log(item);
+
+  const handleBillingPortal = async () => {
+    try {
+      const { data } = await api.post('/stripe/portal', {
+        customerId,
+      });
+      window.location.href = data.url;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
-    <div className="z-10">
-      <div className="snip1265 flex justify-center">
-        <div className="flex justify-between plan">
-          <div className="w-full">
+    <div className='z-10'>
+      <div className='snip1265 flex justify-center'>
+        <div className='flex justify-between plan'>
+          <div className='w-full'>
             <header>
-              <i className="">
-                <img src={CartIcon} alt="" className="mx-auto" />
+              <i className=''>
+                <img src={CartIcon} alt='' className='mx-auto' />
               </i>
 
-              <h4 className="plan-title">{item.product.name}</h4>
+              <h4 className='plan-title'>{item?.product_name}</h4>
             </header>
-            <div className="ml-9">
-              <ul className="plan-features">
-                {item.product.features.map((feature, index) => (
-                  <li key={index}>{feature.name}</li>
+            <div className='ml-9'>
+              <ul className='plan-features'>
+                {item?.features?.map((feature, index) => (
+                  <li key={index}>{feature?.name}</li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="flex flex-col justify-end items-end mr-16 mb-12 w-full text-gray-500">
-            <span className="plan-price">
-              ${(item.unit_amount / 100).toFixed(2)}
+          <div className='flex flex-col justify-end items-end mr-16 mb-12 w-full text-gray-500'>
+            <span className='plan-price'>
+              ${(item?.unit_amount / 100).toFixed(2)}
             </span>
-            <span className="plan-type">/month</span>
-            <h3 className="text-white hover:underline hover:cursor-pointer">
+            <span className='plan-type'>/month</span>
+            <h3
+              className='text-white hover:underline hover:cursor-pointer'
+              onClick={() => handleBillingPortal()}
+            >
               Manage Payment plan
             </h3>
           </div>
