@@ -12,7 +12,7 @@ function Index() {
         </div>
 
         <p className="text-white text-[36px] font-bold text-center">
-          Billing and Membership
+          Billing and membership
         </p>
 
         <div className="bg-white bg-opacity-20  px-8 rounded-md w-[1000px]">
