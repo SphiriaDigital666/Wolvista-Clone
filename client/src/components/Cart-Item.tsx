@@ -32,14 +32,18 @@ const CartItem: React.FC<CartItemProps> = ({
       </div>
 
       <div className="flex items-center justify-between">
-        <p className="text-[#fff] text-[20px] mb-2 font-bold">{name}</p>
-        <p className="text-[#fff] text-[20px]">
+        <p className="text-[#fff] 2xl:text-[20px] xl:text-[18px] lg:text-[16px] mb-2 font-bold">
+          {name}
+        </p>
+        <p className="text-[#fff] 2xl:text-[20px] xl:text-[18px] lg:text-[16px]">
           ${(price * quantity).toFixed(2)}
         </p>
       </div>
 
       <div className="flex items-center justify-between mb-4">
-        <p className="text-[#fff] font-light">Quantity: {quantity}</p>
+        <p className="text-[#fff] font-light 2xl:text-[20px] xl:text-[18px] lg:text-[16px]">
+          Quantity: {quantity}
+        </p>
         <div className="bg-[#13EAFD] text-[#000] px-2 py-[1px] font-semibold">
           <button
             className="pr-3"

@@ -42,6 +42,13 @@ function Router() {
       routes: [{ element: lazy(() => import("../pages/billing")) }],
     },
 
+    {
+      path: "/resetpassword",
+      layout: EmptyLayout,
+      guard: RequireAuth,
+      routes: [{ element: lazy(() => import("../pages/resetpassword")) }],
+    },
+
     { path: "*", element: lazy(() => import("./404")) },
 
     // {

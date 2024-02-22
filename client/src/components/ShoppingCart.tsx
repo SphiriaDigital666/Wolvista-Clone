@@ -75,9 +75,9 @@ const ShoppingCart: React.FC = () => {
             </button>
 
             <div>
-              <div className="flex items-center justify-center gap-6  mb-8">
-                <h2 className="text-center  text-[#fff] text-[35px] font-bold">
-                  Shopping Cart
+              <div className="flex items-center justify-between gap-6  mb-8">
+                <h2 className="text-center  text-[#fff] text-[35px] 2xl:text-[35px] xl:text-[30px] lg:text-[26px] md:text-[22px] font-bold">
+                  Cart
                 </h2>
                 <div className="relative">
                   <MdAddShoppingCart className="text-[#fff] text-[35px] " />
@@ -135,9 +135,11 @@ const ShoppingCart: React.FC = () => {
             </div> */}
 
             <div className="flex items-center justify-between">
-              <p className="text-[#fff] text-[20px] uppercase">Subtotal </p>
+              <p className="text-[#fff] 2xl:text-[20px] xl:text-[18px] lg:text-[16px] uppercase">
+                Subtotal{" "}
+              </p>
 
-              <p className="text-[#fff] text-[20px]">
+              <p className="text-[#fff] 2xl:text-[20px] xl:text-[18px] lg:text-[16px]">
                 $
                 {cart
                   .reduce(
@@ -155,11 +157,11 @@ const ShoppingCart: React.FC = () => {
               </div>
             )}
             <div className="flex justify-between">
-              <p className="text-[#fff] text-[20px] uppercase">
+              <p className="text-[#fff] 2xl:text-[20px] xl:text-[18px] lg:text-[16px] uppercase">
                 Discounted Subtotal:
               </p>
 
-              <p className="text-[#fff] text-[20px]">
+              <p className="text-[#fff] 2xl:text-[20px] xl:text-[18px] lg:text-[16px]">
                 ${discountedSubtotal.toFixed(2)}
               </p>
             </div>
