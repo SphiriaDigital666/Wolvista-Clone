@@ -96,7 +96,7 @@ export function TopNav() {
 
         <IconButton
           variant="text"
-          className="ml-auto h-6 w-6 text-white hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+          className=" h-6 w-6 text-white ml-2 hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
           ripple={false}
           onClick={() => setOpenNav(!openNav)}
         >
@@ -136,16 +136,25 @@ export function TopNav() {
         <div className="container mx-auto">
           {navList}
           <div className="grid grid-cols-2 gap-2">
-            <Button variant="text" size="sm" fullWidth className="text-btn">
-              <span className=" text-white">Login</span>
+            <Button
+              variant="gradient"
+              size="sm"
+              fullWidth
+              className="rounded-btn"
+              onClick={handleSignout}
+            >
+              <span className=" text-white">
+                {isAuthenticated ? 'Logout' : 'Login'}
+              </span>
             </Button>
             <Button
               variant="outlined"
               size="sm"
               fullWidth
               className="rounded-btn"
+              onClick={() => navigate('/account')}
             >
-              <span className="text-white">Get Started</span>
+              <span className="text-white">Account</span>
             </Button>
           </div>
         </div>
