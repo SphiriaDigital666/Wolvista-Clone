@@ -13,29 +13,34 @@ import RequireAuth from "./guards/require-auth";
 function Router() {
   const routes: any = [
     {
-      path: "/",
+      path: '/',
       layout: EmptyLayout,
-      routes: [{ element: lazy(() => import("../pages/sign-in")) }],
+      routes: [{ element: lazy(() => import('../pages/sign-in')) }],
     },
     {
-      path: "/sign-up",
+      path: '/sign-up',
       layout: EmptyLayout,
-      routes: [{ element: lazy(() => import("../pages/sign-up")) }],
+      routes: [{ element: lazy(() => import('../pages/sign-up')) }],
     },
     {
-      path: "/account",
+      path: '/reset-password',
+      layout: EmptyLayout,
+      routes: [{ element: lazy(() => import('../pages/reset-password')) }],
+    },
+    {
+      path: '/account',
       layout: HomeLayout,
       guard: SubscriptionAndAuthWrapper,
-      routes: [{ element: lazy(() => import("../pages/account")) }],
+      routes: [{ element: lazy(() => import('../pages/account')) }],
     },
     {
-      path: "/plans",
+      path: '/plans',
       layout: HomeLayout,
       guard: RequireAuth,
-      routes: [{ element: lazy(() => import("../pages/plans")) }],
+      routes: [{ element: lazy(() => import('../pages/plans')) }],
     },
 
-    { path: "*", element: lazy(() => import("./404")) },
+    { path: '*', element: lazy(() => import('./404')) },
 
     // {
     //   path: "/lesson",
