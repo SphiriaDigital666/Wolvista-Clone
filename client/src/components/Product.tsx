@@ -17,7 +17,7 @@ const Product: React.FC<ProductProps> = ({ item, onAddToCart }) => {
       </div> */}
 
       <div className="snip1265 flex justify-center">
-        <div className="plan 2xl:w-[405px] xl:w-[350px] lg:w-[320px] md:w-[300px] sm:w-[280px] w-[400px] mb-16">
+        <div className="plan 2xl:w-[405px] xl:w-[350px] lg:w-[320px] md:w-[300px] sm:w-[280px] w-[400px] mb-16 mr-6">
           <header>
             <i className="">
               <img
