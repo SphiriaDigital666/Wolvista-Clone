@@ -1,10 +1,10 @@
-import React from "react";
-import "../../../src/components/leaklight.css";
+import React from 'react';
+import '../../../src/components/leaklight.css';
 
-import ShoppingCart from "../../components/ShoppingCart";
+import ShoppingCart from '../../components/ShoppingCart';
 function Index() {
   return (
-    <div className="bg-[#060606] h-max">
+    <div className="bg-[#060606] h-max mt-5">
       <section>
         <div>
           <div className="rainbow-gradient-circle"></div>

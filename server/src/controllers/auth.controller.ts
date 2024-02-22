@@ -164,3 +164,32 @@ export const logout = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };
+
+/* 
+?@desc   Reset password
+*@route  Post /api/auth/reset-password
+*@access Private
+*/
+
+export const resetPassword = async (req:Request, res:Response) => {
+  const { email, password } = req.body;
+  try {
+    const user = await getUserByEmail(email);
+    if (!user) return res.status(404).json({ message: 'User does not exists' });
+  
+    // generate salt and hash password using bcrypt
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // update user's password in database
+    user.password = hashedPassword;
+    await user.save();
+
+    return res.status(200).json({ message: 'Password reset successful' });
+  } catch (err) {
+    console.error(err.message);
+    return res
+      .status(500)
+      .json({ error: 'Error occurred while resetting the password' });
+  }
+};

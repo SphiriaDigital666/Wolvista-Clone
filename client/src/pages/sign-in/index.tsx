@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Checkbox, Input } from "@material-tailwind/react";
@@ -10,10 +10,12 @@ import { useAuthStore } from "../../store/authStore";
 import api from "../../utils/api";
 import ShoppingCart from "../../components/ShoppingCart";
 import "../../components/leaklight.css";
+import { FormError } from "../../components/FormError";
 
 function AccountPage() {
   const navigate = useNavigate();
   const { setUser, user } = useAuthStore();
+  const [error, setError] = useState('');
 
   const {
     register,
@@ -22,8 +24,8 @@ function AccountPage() {
   } = useForm<LoginFormValues>({
     resolver: zodResolver(LoginFormSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   });
 
@@ -39,31 +41,35 @@ function AccountPage() {
 
   const onSubmit = async (values: LoginFormValues) => {
     try {
-      const { data } = await api.post("/auth/login", { ...values });
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      const { data } = await api.post('/auth/login', { ...values });
+      localStorage.setItem('userInfo', JSON.stringify(data));
       setUser(data.user);
 
       if (!data.user.subscription) {
-        navigate("/plans");
+        navigate('/plans');
       } else {
-        navigate("/account");
+        navigate('/account');
       }
     } catch (error: any) {
       if (error.response) {
-        console.log(error.response.data.error);
+        console.log(error.response.data.message);
+        setError(error.response.data.message);
+        setTimeout(() => {
+          setError('');
+        }, 5000);
       } else if (error.request) {
-        console.log("No response received from the server.");
+        console.log('No response received from the server.');
       } else {
         // Something happened in setting up the request that triggered an Error
-        console.log("Error while setting up the request:", error.message);
+        console.log('Error while setting up the request:', error.message);
       }
     }
   };
   return (
     <div>
       <div>
-        <div className="rainbow-gradient-circle"></div>
-        <div className="rainbow-gradient-circle theme-pink"></div>
+        <div className='rainbow-gradient-circle'></div>
+        <div className='rainbow-gradient-circle theme-pink'></div>
       </div>
 
       <div className="flex items-center justify-center ">
@@ -72,13 +78,13 @@ function AccountPage() {
             <img src={LOGO} className="w-[40px]" alt="Maple vista logo" />
             <p className="text-[20px] text-[#5264d0]">MapleVista</p>
           </div>
-          <p className="text-[14px] mb-8 text-center text-[#fff] font-regular">
+          <p className='text-[14px] mb-8 text-center text-[#fff] font-regular'>
             Sign in to your account
           </p>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-8">
-              <div className="w-full">
-                <div className="relative h-10 w-full min-w-[200px] ">
+            <div className='mb-8'>
+              <div className='w-full'>
+                <div className='relative h-10 w-full min-w-[200px] '>
                   <input
                     type="email"
                     placeholder="Email Address"
@@ -90,14 +96,14 @@ function AccountPage() {
                 </div>
 
                 {errors.email && (
-                  <span className="text-red-500">Email is required</span>
+                  <span className='text-red-500'>{errors.email.message}</span>
                 )}
               </div>
             </div>
 
-            <div className="mb-2">
-              <div className="w-full">
-                <div className="relative h-10 w-full min-w-[200px] ">
+            <div className='mb-2'>
+              <div className='w-full'>
+                <div className='relative h-10 w-full min-w-[200px] '>
                   <input
                     type="password"
                     placeholder="Password"
@@ -109,25 +115,30 @@ function AccountPage() {
                 </div>
 
                 {errors.password && (
-                  <span className="text-red-500">Password is required</span>
+                  <span className='text-red-500'>{errors.password.message}</span>
                 )}
               </div>
             </div>
 
-            <div className="flex gap-8 items-center mb-6">
-              <div className="flex items-center -ml-2">
-                <Checkbox className="" crossOrigin="" />
-                <p className="text-white font-thin text-[14px]">Remember Me</p>
+            <div className='flex gap-8 items-center mb-6'>
+              <div className='flex items-center -ml-2'>
+                <Checkbox className='' crossOrigin='' />
+                <p className='text-white font-thin text-[14px]'>Remember Me</p>
               </div>
 
-              <p className="text-[#5264d0] text-[14px]">Forget Password</p>
+              <p className='text-[#5264d0] text-[14px]'>Forget Password</p>
             </div>
+            {error && (
+              <div className='mb-2'>
+                <FormError message={error} />
+              </div>
+            )}
 
             <Button
-              className="bg w-full mb-4 bg-gradient-to-r from-[#5D4FCA] to-[#13EAFD]"
-              type="submit"
+              className='bg w-full mb-4 bg-gradient-to-r from-[#5D4FCA] to-[#13EAFD]'
+              type='submit'
             >
-              {" "}
+              {' '}
               Sign in
             </Button>
           </form>
