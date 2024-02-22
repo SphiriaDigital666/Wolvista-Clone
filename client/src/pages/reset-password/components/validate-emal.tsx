@@ -1,12 +1,13 @@
-import React,{ Button, Card, Input } from '@material-tailwind/react';
-import { FC, useEffect, useState } from 'react';
-import { MdArrowBackIosNew } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import React, { Button, Card, Input } from "@material-tailwind/react";
+import { FC, useEffect, useState } from "react";
+import { MdArrowBackIosNew } from "react-icons/md";
+import { Link } from "react-router-dom";
 // import { setOpt } from '../../../app/features/otp/otpSlice';
 // import { useAppDispatch } from '../../../app/hooks';
-// import FORGOT_PASS_ICON from '../../../assets/forgot_password/forgot_pass.png';
-// import LOGO from '../../../assets/register/logo.png';
-import api from '../../../utils/api';
+import FORGOT_PASS_ICON from "../../../assets/passwordReset/password_updated.png";
+// import LOGO from "../../../assets/IconGradient.png";
+import api from "../../../utils/api";
+import "../../../components/leaklight.css";
 
 interface ValidateEmailProps {
   handleNextStep: () => void;
@@ -14,9 +15,9 @@ interface ValidateEmailProps {
 
 const ValidateEmail: FC<ValidateEmailProps> = ({ handleNextStep }) => {
   // const dispatch = useAppDispatch();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const validateEmail = async () => {
@@ -26,7 +27,7 @@ const ValidateEmail: FC<ValidateEmailProps> = ({ handleNextStep }) => {
         setMessage(data.message);
       } catch (error) {
         setIsEmailValid(false);
-        setMessage('Error validating email');
+        setMessage("Error validating email");
       }
     };
 
@@ -35,7 +36,7 @@ const ValidateEmail: FC<ValidateEmailProps> = ({ handleNextStep }) => {
       validateEmail();
     } else {
       setIsEmailValid(false);
-      setMessage('Email is required');
+      setMessage("Email is required");
     }
   }, [email]);
 
@@ -44,7 +45,7 @@ const ValidateEmail: FC<ValidateEmailProps> = ({ handleNextStep }) => {
       const { data } = await api.post(`/email/send-otp`, { email });
       console.log(data.message);
 
-      if (data.message === 'Previous OTP is still valid') {
+      if (data.message === "Previous OTP is still valid") {
         // If the message is 'Previous OTP is still valid', go to the next step
         handleNextStep();
       } else {
@@ -58,63 +59,62 @@ const ValidateEmail: FC<ValidateEmailProps> = ({ handleNextStep }) => {
         // If the error status is 400, check the error message
         const errorMessage = error.response.data.message;
 
-        if (errorMessage === 'Previous OTP is still valid') {
+        if (errorMessage === "Previous OTP is still valid") {
           // If the message is 'Previous OTP is still valid', go to the next step
           handleNextStep();
         } else {
-          console.error('Error sending OTP:', errorMessage);
+          console.error("Error sending OTP:", errorMessage);
         }
       } else {
         // Handle other types of errors
-        console.error('Error sending OTP:', error);
+        console.error("Error sending OTP:", error);
       }
     }
   };
 
   return (
     <>
-      <div className='flex items-center justify-center mb-6'>
-        <img
-        //  src={LOGO} 
-         alt='aad' 
-         className='w-[150px]
-          object-contain' />
+      <div>
+        <div className="rainbow-gradient-circle"></div>
+        <div className="rainbow-gradient-circle theme-pink"></div>
       </div>
       <Card
-        color='white'
-        className='m-4 sm:mb-0 sm:w-[25rem] grid px-8 pt-8 pb-8'
+        color="white"
+        className="m-4 sm:mb-0 sm:w-[25rem] grid px-8 pt-8 pb-8 bg-[#1f1f1f]"
       >
-        <div className='flex items-center justify-center mb-6'>
+        <div className="flex items-center justify-center mb-6">
           <img
-            // src={FORGOT_PASS_ICON}
-            alt='aad'
-            className='object-scale-down w-[80px]'
+            src={FORGOT_PASS_ICON}
+            alt="aad"
+            className="object-scale-down w-[80px]"
           />
         </div>
 
-        <h2 className='text-[25px] text-primary text-center mb-4'>
+        <h2 className="text-[25px] text-white text-center mb-4">
           Forgot Password?
         </h2>
 
-        <p className='text-primary_font_color text-center'>
+        <p className="text-white text-center">
           Enter your email, and we'll send you an OTP to reset your password
         </p>
         <form
-          className='mt-8 mb-2 w-full max-w-screen-lg'
+          className="mt-8 mb-2 w-full max-w-screen-lg"
           onSubmit={(e) => {
             e.preventDefault();
             handlePwResetRequest();
           }}
         >
-          <div className='mb-1 flex flex-col gap-5'>
-            <div>
+          <div className="mb-1 flex flex-col gap-5">
+            <div className="w-full">
               <Input
-                placeholder='Enter your email here'
-                className='!border-t-blue-gray-200 focus:!border-t-gray-900 !bg-input_background rounded-full'
+                type="email"
+                placeholder="Enter your email here"
+                className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
                 labelProps={{
-                  className: 'before:content-none after:content-none',
+                  className: "hidden",
                 }}
-                crossOrigin='anonymous'
+                containerProps={{ className: "min-w-[100px]" }}
+                crossOrigin="anonymous"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -123,7 +123,7 @@ const ValidateEmail: FC<ValidateEmailProps> = ({ handleNextStep }) => {
             {message && (
               <p
                 className={`text-${
-                  isEmailValid ? 'green-500' : 'red-500'
+                  isEmailValid ? "green-500" : "red-500"
                 } font-semibold`}
               >
                 {message}
@@ -132,19 +132,18 @@ const ValidateEmail: FC<ValidateEmailProps> = ({ handleNextStep }) => {
           </div>
 
           <Button
-            className='mt-6 bg-primary rounded-full'
-            fullWidth
-            type='submit'
+            className="w-full mb-4 bg-gradient-to-r from-[#5D4FCA] to-[#13EAFD] "
+            type="submit"
             disabled={!isEmailValid}
           >
-            <h6 className='normal-case'>Request</h6>
+            <h6 className="normal-case text-white">Request</h6>
           </Button>
 
-          <div className='flex items-center justify-center gap-2 mt-6'>
-            <MdArrowBackIosNew className='text-[#8645FF]' />
+          <div className="flex items-center justify-center gap-2 mt-6">
+            <MdArrowBackIosNew className="text-white" />
 
-            <Link to='/'>
-              <p className='text-[14px] text-[#8645FF] mt-0.5'>Back to Login</p>
+            <Link to="/">
+              <p className="text-[14px] text-white mt-0.5">Back to Login</p>
             </Link>
           </div>
         </form>
