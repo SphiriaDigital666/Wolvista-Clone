@@ -1,6 +1,6 @@
-import React from "react";
-import "./product.css";
-import CartIcon from "../assets/cart-icon-gradient.png";
+import React from 'react';
+import './product.css';
+import CartIcon from '../assets/cart-icon-gradient.png';
 
 interface ProductProps {
   item: any;
@@ -9,14 +9,14 @@ interface ProductProps {
 
 const Product: React.FC<ProductProps> = ({ item, onAddToCart }) => {
   return (
-    <div className="">
+    <div className="z-10">
       {/* <div className="bg-[#ffe1c8]">
         <h2 className="bg-[#e7ffc8] font-bold text-[30px]">{name}</h2>
         <p>${price.toFixed(2)}</p>
         <button onClick={() => onAddToCart(id)}>Add to Cart</button>
       </div> */}
 
-      <div className="snip1265 flex justify-center ">
+      <div className="snip1265 flex justify-center">
         <div className="plan ">
           <header>
             <i className="">
