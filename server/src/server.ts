@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import http from 'http';
 import morgan from 'morgan';
+import path from 'path';
 import { connectDb } from './config/db';
 import { stripe } from './config/stripe';
 import { swaggerDocs } from './config/swagger';
@@ -65,22 +66,14 @@ app.use('/api/v1', routes());
 
 const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET;
 
-// Middleware to verify Stripe webhook signatures and parse raw body
-const stripeWebhookMiddleware = express.raw({
-  type: 'application/json',
-  verify: (req, res, buf) => {
-    const sig = req.headers['stripe-signature'] as string;
-
-    try {
-      // @ts-ignore
-      req['rawBody'] = buf.toString();
-      // @ts-ignore
-      stripe.webhooks.constructEvent(req['rawBody'], sig, endpointSecret);
-    } catch (err) {
-      throw new Error(`Webhook Error: ${err.message}`);
-    }
-  },
-});
+if (process.env.NODE_ENV !== 'development') {
+  app.use(express.static(path.join(__dirname, '..', '..', 'client', 'build')));
+  app.get('/*', (req, res) => {
+    res.sendFile(
+      path.join(__dirname, '..', '..', 'client', 'build', 'index.html')
+    );
+  });
+}
 
 server.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
