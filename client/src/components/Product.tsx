@@ -36,7 +36,10 @@ const Product: React.FC<ProductProps> = ({ item, onAddToCart }) => {
             ))}
           </ul>
           <div className="plan-select absolute bottom-[0px] w-full">
-            <div className="select-plan" onClick={() => onAddToCart(item.id)}>
+            <div
+              className="select-plan"
+              onClick={() => onAddToCart(item.id)}
+            >
               Purchase Now
             </div>
           </div>
