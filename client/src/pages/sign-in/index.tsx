@@ -73,7 +73,7 @@ function AccountPage() {
       </div>
 
       <div className="flex items-center justify-center ">
-        <div className="bg-white bg-opacity-20 w-max px-8 rounded-md">
+        <div className="bg-[#FFFFFF]/10 bg-opacity-20 w-max px-8 rounded-md">
           <div className="flex items-center justify-center gap-4 mt-12 mb-3">
             <img src={LOGO} className="w-[40px]" alt="Maple vista logo" />
             <p className="text-[20px] text-[#5264d0]">MapleVista</p>
