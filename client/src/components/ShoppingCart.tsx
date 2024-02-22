@@ -65,7 +65,7 @@ const ShoppingCart: React.FC = () => {
 
       {/* ------------------------------------------------------------ Shopping cart sidebar starts here ----------------------------------------------------------------------- */}
       <div className={`shopping-cart ${showCart ? 'slide-in' : ''} z-20`}>
-        <div className="flex flex-col  justify-between  h-full">
+        <div className="flex flex-col justify-between h-full">
           <div>
             <button className="mb-2" onClick={() => setShowCart(false)}>
               <div className="bg-[#000]">
