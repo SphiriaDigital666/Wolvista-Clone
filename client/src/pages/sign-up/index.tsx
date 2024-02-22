@@ -62,26 +62,26 @@ function AccountPage() {
   return (
     <div>
       <div>
-        <div className='rainbow-gradient-circle'></div>
-        <div className='rainbow-gradient-circle theme-pink'></div>
+        <div className="rainbow-gradient-circle"></div>
+        <div className="rainbow-gradient-circle theme-pink"></div>
       </div>
 
-      <div className='flex items-center justify-center'>
-        <div className='bg-white bg-opacity-20 w-max px-8 rounded-md z-10'>
-          <div className='flex items-center justify-center gap-4 mt-12 mb-3'>
-            <img src={LOGO} className='w-[40px]' alt='Maple vista logo' />
-            <p className='text-[20px] text-[#5264d0]'>MapleVista</p>
+      <div className="flex items-center justify-center">
+        <div className="bg-transparent/30 md:bg-transparent/90 w-[360px] md:w-[450px] px-8 rounded-md z-10">
+          <div className="flex items-center justify-center gap-4 mt-12 mb-3">
+            <img src={LOGO} className="w-[40px]" alt="Maple vista logo" />
+            <p className="text-[20px] text-[#5264d0]">MapleVista</p>
           </div>
-          <p className='text-[14px] mb-8 text-center text-[#fff] font-regular'>
+          <p className="text-[14px] mb-8 text-center text-[#fff] font-regular">
             Sign up to your account
           </p>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='mb-8'>
-              <div className='w-full'>
-                <div className='relative h-10 w-full min-w-[200px] '>
+            <div className="mb-8">
+              <div className="w-full">
+                <div className="relative h-10 w-full min-w-[200px] ">
                   <input
-                    placeholder='First Name'
-                    className='peer h-full w-full rounded-[7px]  !border  !border-gray-300 border-t-transparent bg-transparent bg-white bg-opacity-0 px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700  shadow-lg shadow-gray-900/5 outline outline-0 ring-4 ring-transparent transition-all placeholder:text-gray-500 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2  focus:!border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 focus:ring-gray-900/10 disabled:border-0 disabled:bg-blue-gray-50'
+                    placeholder="First Name"
+                    className="peer h-full w-full rounded-[7px]  !border  !border-gray-300 border-t-transparent bg-transparent bg-white bg-opacity-0 px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700  shadow-lg shadow-gray-900/5 outline outline-0 ring-4 ring-transparent transition-all placeholder:text-gray-500 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2  focus:!border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 focus:ring-gray-900/10 disabled:border-0 disabled:bg-blue-gray-50"
                     {...register('firstName')}
                   />
 
@@ -89,19 +89,19 @@ function AccountPage() {
                 </div>
 
                 {errors.firstName && (
-                  <span className='text-red-500'>
+                  <span className="text-red-500">
                     {errors.firstName.message}
                   </span>
                 )}
               </div>
             </div>
 
-            <div className='mb-8'>
-              <div className='w-full'>
-                <div className='relative h-10 w-full min-w-[200px] '>
+            <div className="mb-8">
+              <div className="w-full">
+                <div className="relative h-10 w-full min-w-[200px] ">
                   <input
-                    placeholder='Last Name'
-                    className='peer h-full w-full rounded-[7px]  !border  !border-gray-300 border-t-transparent bg-transparent bg-white bg-opacity-0 px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700  shadow-lg shadow-gray-900/5 outline outline-0 ring-4 ring-transparent transition-all placeholder:text-gray-500 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2  focus:!border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 focus:ring-gray-900/10 disabled:border-0 disabled:bg-blue-gray-50'
+                    placeholder="Last Name"
+                    className="peer h-full w-full rounded-[7px]  !border  !border-gray-300 border-t-transparent bg-transparent bg-white bg-opacity-0 px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700  shadow-lg shadow-gray-900/5 outline outline-0 ring-4 ring-transparent transition-all placeholder:text-gray-500 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2  focus:!border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 focus:ring-gray-900/10 disabled:border-0 disabled:bg-blue-gray-50"
                     {...register('lastName')}
                   />
 
@@ -109,19 +109,19 @@ function AccountPage() {
                 </div>
 
                 {errors.lastName && (
-                  <span className='text-red-500'>
+                  <span className="text-red-500">
                     {errors.lastName.message}
                   </span>
                 )}
               </div>
             </div>
 
-            <div className='mb-8'>
-              <div className='w-full'>
-                <div className='relative h-10 w-full min-w-[200px] '>
+            <div className="mb-8">
+              <div className="w-full">
+                <div className="relative h-10 w-full min-w-[200px] ">
                   <input
-                    placeholder='Email'
-                    className='peer h-full w-full rounded-[7px]  !border  !border-gray-300 border-t-transparent bg-transparent bg-white bg-opacity-0 px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700  shadow-lg shadow-gray-900/5 outline outline-0 ring-4 ring-transparent transition-all placeholder:text-gray-500 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2  focus:!border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 focus:ring-gray-900/10 disabled:border-0 disabled:bg-blue-gray-50'
+                    placeholder="Email"
+                    className="peer h-full w-full rounded-[7px]  !border  !border-gray-300 border-t-transparent bg-transparent bg-white bg-opacity-0 px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700  shadow-lg shadow-gray-900/5 outline outline-0 ring-4 ring-transparent transition-all placeholder:text-gray-500 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2  focus:!border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 focus:ring-gray-900/10 disabled:border-0 disabled:bg-blue-gray-50"
                     {...register('email')}
                   />
 
@@ -129,18 +129,18 @@ function AccountPage() {
                 </div>
 
                 {errors.email && (
-                  <span className='text-red-500'>{errors.email.message}</span>
+                  <span className="text-red-500">{errors.email.message}</span>
                 )}
               </div>
             </div>
 
-            <div className='mb-8'>
-              <div className='w-72'>
-                <div className='relative h-10 w-full min-w-[200px] '>
+            <div className="mb-8">
+              <div className="w-full">
+                <div className="relative h-10 w-full min-w-[200px] ">
                   <input
-                    type='password'
-                    placeholder='Password'
-                    className='peer h-full w-full rounded-[7px]  !border  !border-gray-300 border-t-transparent bg-transparent bg-white bg-opacity-0 px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700  shadow-lg shadow-gray-900/5 outline outline-0 ring-4 ring-transparent transition-all placeholder:text-gray-500 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2  focus:!border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 focus:ring-gray-900/10 disabled:border-0 disabled:bg-blue-gray-50'
+                    type="password"
+                    placeholder="Password"
+                    className="peer h-full w-full rounded-[7px]  !border  !border-gray-300 border-t-transparent bg-transparent bg-white bg-opacity-0 px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700  shadow-lg shadow-gray-900/5 outline outline-0 ring-4 ring-transparent transition-all placeholder:text-gray-500 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2  focus:!border-gray-900 focus:border-t-transparent focus:!border-t-gray-900 focus:outline-0 focus:ring-gray-900/10 disabled:border-0 disabled:bg-blue-gray-50"
                     {...register('password')}
                   />
 
@@ -148,26 +148,29 @@ function AccountPage() {
                 </div>
 
                 {errors.password && (
-                  <span className='text-red-500'>
+                  <span className="text-red-500">
                     {errors.password.message}
                   </span>
                 )}
               </div>
-              <div className='mt-3'>
+              <div className="mt-3">
                 {' '}
                 <FormError message={errorMessage!} />
               </div>
             </div>
 
-            <Button className='w-full mb-4' type='submit'>
+            <Button
+              className="bg w-full mb-4 bg-gradient-to-r from-[#5D4FCA] to-[#13EAFD] "
+              type="submit"
+            >
               {' '}
-              Sign Up
+              Sign up
             </Button>
           </form>
-          <p className='w-full mb-4 text-[#5264d0] text-center'>
+          <p className="w-full mb-4 text-[#5264d0] text-center">
             Already a member?{' '}
             <span
-              className='hover:text-white hover:underline hover:cursor-pointer'
+              className="hover:text-white hover:underline hover:cursor-pointer"
               onClick={() => navigate('/')}
             >
               Sign in

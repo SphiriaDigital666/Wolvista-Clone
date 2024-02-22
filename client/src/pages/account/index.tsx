@@ -27,33 +27,33 @@ const Account = () => {
   }, []);
 
   return (
-    <div className='container bg-[#060606] h-max mt-5 mx-auto'>
+    <div className="container bg-[#060606] h-max mt-5 mx-auto">
       <section>
         <div>
-          <div className='rainbow-gradient-circle'></div>
-          <div className='rainbow-gradient-circle theme-pink'></div>
+          <div className="rainbow-gradient-circle"></div>
+          <div className="rainbow-gradient-circle theme-pink"></div>
         </div>
 
         <div>
-          <div className='mt-16 ml-20'>
-            <span className='text-white text-4xl font-medium md:ml-10'>
+          <div className="ml-4 md:mt-16 md:ml-20">
+            <span className="text-white text-2xl md:text-4xl font-medium md:ml-10">
               Billing and membership
             </span>
           </div>
           <div>
-            <div className='rainbow-gradient-circle'></div>
-            <div className='rainbow-gradient-circle theme-pink'></div>
+            <div className="rainbow-gradient-circle"></div>
+            <div className="rainbow-gradient-circle theme-pink"></div>
           </div>
         </div>
 
-        <div className='rounded-md overflow-hidden bg-[#FFFFFF]/20 mt-10 mx-28 h-[550px] overflow-y-auto'>
-          <div className='mt-8'>
-            <span className='text-white text-4xl font-medium pl-16'>
+        <div className="rounded-md overflow-hidden bg-[#FFFFFF]/10 mt-4 md:mt-10 mx-4 md:mx-28 h-[620px] md:h-[550px] overflow-y-auto">
+          <div className="mt-4 md:mt-8">
+            <span className="text-white text-2xl md:text-4xl font-medium m-4 md:pl-16">
               Current Plan
             </span>
           </div>
-          <hr className='h-px my-6 ml-16 mr-16 bg-gray-200 ' />
-          <div className='flex flex-col w-full -mt-10 md:gap-y-16'>
+          <hr className="h-px my-6 m-4 md:ml-16 mr-16 bg-gray-200 " />
+          <div className="flex flex-col w-full -mt-10">
             {/* @ts-ignore */}
             {subscriptions?.map((subscription: any) =>
               subscription.products.map((product) => (
@@ -67,7 +67,7 @@ const Account = () => {
           </div>
         </div>
         <div
-          className='flex text-white text-xl gap-3 font-medium justify-end items-center mt-3 mr-32 hover:underline hover:cursor-pointer'
+          className="flex text-white text-xl gap-3 font-medium justify-center md:justify-end items-center mt-3 md:mr-32 hover:underline hover:cursor-pointer"
           onClick={() => navigate('/plans')}
         >
           <PlusIcon />
