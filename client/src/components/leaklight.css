@@ -86,7 +86,7 @@
 
 .rainbow-gradient-circle {
   position: fixed;
-  left: -350px;
+  left: -250px;
   top: 250px;
   right: auto;
   bottom: auto;
@@ -106,8 +106,8 @@
 
 .rainbow-gradient-circle.theme-pink {
   left: auto;
-  top: -350px;
-  right: -350px;
+  top: -300px;
+  right: -300px;
   bottom: auto;
   background-image: linear-gradient(
     45deg,
