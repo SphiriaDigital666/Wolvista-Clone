@@ -46,7 +46,10 @@ const ShoppingCart: React.FC = () => {
     <div className="container mx-auto">
       {/* --------------------------------------------------------  Main content starts here -------------------------------------------------------------------------------- */}
       <div>
-        <h1 className="text-white ml-5 md:ml-10">Product List</h1>
+        {/* <h1 className="text-white ml-5 md:ml-10">Product List</h1> */}
+        <span className="text-white text-2xl md:text-4xl p-4 font-medium md:ml-10">
+          Choose a plan to subscribe,
+        </span>
         <div>
           <div className="rainbow-gradient-circle"></div>
           <div className="rainbow-gradient-circle theme-pink"></div>

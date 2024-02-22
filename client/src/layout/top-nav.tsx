@@ -6,7 +6,7 @@ import {
 } from '@material-tailwind/react';
 import React from 'react';
 import { MdShoppingCart } from 'react-icons/md';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import LOGO from '../assets/logo-maple.png';
 import { useCurrentUser } from '../store/authHooks';
 import { useShoppingCartStore } from '../store/shoppingCartStore';
@@ -15,6 +15,8 @@ import api from '../utils/api';
 
 export function TopNav() {
   const navigate = useNavigate();
+  const {pathname} = useLocation();
+  console.log(pathname);
   const [openNav, setOpenNav] = React.useState(false);
 
   const { setShowCart, cart } = useShoppingCartStore();
@@ -73,6 +75,16 @@ export function TopNav() {
                 </div>
               )}
             </button>
+            {pathname === '/plans' && (
+              <Button
+              variant="text"
+              size="sm"
+              className="hidden lg:inline-block mr-2 text-btn"
+              onClick={() => navigate('/account')}
+            >
+              <span className=" text-white">Account</span>
+            </Button>
+            )}
 
             <Button
               variant="text"
