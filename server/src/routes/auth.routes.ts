@@ -1,4 +1,4 @@
-import { login, logout, register } from '../controllers/auth.controller';
+import { login, logout, register, resetPassword } from '../controllers/auth.controller';
 import { Router } from 'express';
 
 export default (router: Router) => {
@@ -78,4 +78,5 @@ export default (router: Router) => {
    *         description: Internal server error
    */
   router.post('/auth/logout', logout);
+  router.post('/auth/reset-password', resetPassword);
 };
