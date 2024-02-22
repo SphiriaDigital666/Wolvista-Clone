@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import React, { useEffect } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@material-tailwind/react';
@@ -7,21 +6,11 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import LOGO from '../../assets/Icon Gradient.png';
-import '../../components/leaklight.css';
-import { RegisterFormSchema, RegisterFormValues } from '../../lib/validation';
-import { useAuthStore } from '../../store/authStore';
-import api from '../../utils/api';
 import { FormError } from '../../components/FormError';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Checkbox, Input } from '@material-tailwind/react';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import LOGO from '../../assets/Icon Gradient.png';
-import { RegisterFormSchema, RegisterFormValues } from '../../lib/validation';
-import api from '../../utils/api';
-import { useAuthStore } from '../../store/authStore';
 import '../../components/leaklight.css';
+import { RegisterFormSchema, RegisterFormValues } from '../../lib/validation';
+import { useAuthStore } from '../../store/authStore';
+import api from '../../utils/api';
 
 function AccountPage() {
   const navigate = useNavigate();
@@ -39,16 +28,11 @@ function AccountPage() {
       lastName: '',
       email: '',
       password: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
     },
   });
 
   useEffect(() => {
     if (user) {
-      navigate('/account');
       navigate('/account');
     }
   }, [user, navigate]);
@@ -56,15 +40,12 @@ function AccountPage() {
   const onSubmit = async (values: RegisterFormValues) => {
     try {
       await api.post('/auth/register', {
-      await api.post('/auth/register', {
         ...values,
       });
       navigate('/');
-      navigate('/');
     } catch (error: any) {
       if (error.response) {
-        const errorMessage = error.response.data.message;
-        setErrorMessage(errorMessage);
+        setErrorMessage(error.response.data.message);
 
         // Set a timer to clear the error message after 5 seconds
         setTimeout(() => {
@@ -72,10 +53,8 @@ function AccountPage() {
         }, 5000);
       } else if (error.request) {
         console.log('No response received from the server.');
-        console.log('No response received from the server.');
       } else {
         // Something happened in setting up the request that triggered an Error
-        console.log('Error while setting up the request:', error.message);
         console.log('Error while setting up the request:', error.message);
       }
     }
@@ -88,7 +67,7 @@ function AccountPage() {
       </div>
 
       <div className='flex items-center justify-center'>
-        <div className='bg-white bg-opacity-20 w-max px-8 rounded-md'>
+        <div className='bg-white bg-opacity-20 w-max px-8 rounded-md z-10'>
           <div className='flex items-center justify-center gap-4 mt-12 mb-3'>
             <img src={LOGO} className='w-[40px]' alt='Maple vista logo' />
             <p className='text-[20px] text-[#5264d0]'>MapleVista</p>
@@ -150,7 +129,7 @@ function AccountPage() {
                 </div>
 
                 {errors.email && (
-                  <span className='text-red-500'> {errors.email.message}</span>
+                  <span className='text-red-500'>{errors.email.message}</span>
                 )}
               </div>
             </div>
@@ -170,13 +149,12 @@ function AccountPage() {
 
                 {errors.password && (
                   <span className='text-red-500'>
-                    {' '}
                     {errors.password.message}
                   </span>
                 )}
               </div>
-
               <div className='mt-3'>
+                {' '}
                 <FormError message={errorMessage!} />
               </div>
             </div>
@@ -188,12 +166,8 @@ function AccountPage() {
           </form>
           <p className='w-full mb-4 text-[#5264d0] text-center'>
             Already a member?{' '}
-          <p className="w-full mb-4 text-[#5264d0] text-center">
-            Already a member?{' '}
             <span
               className='hover:text-white hover:underline hover:cursor-pointer'
-              onClick={() => navigate('/')}
-              className="hover:text-white hover:underline hover:cursor-pointer"
               onClick={() => navigate('/')}
             >
               Sign in
