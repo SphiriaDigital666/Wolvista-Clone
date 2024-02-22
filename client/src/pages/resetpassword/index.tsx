@@ -11,7 +11,7 @@ function Index() {
       <section>
         <>
           <div className="flex items-center justify-center mb-6">
-            <img src={LOGO} alt="aad" className="w-[150px] object-contain" />
+            {/* <img src={LOGO} alt="aad" className="w-[150px] object-contain" /> */}
           </div>
           <Card
             color="white"
