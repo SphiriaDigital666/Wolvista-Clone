@@ -3,19 +3,19 @@ import {
   IconButton,
   MobileNav,
   Navbar,
-} from '@material-tailwind/react';
-import React from 'react';
-import { MdShoppingCart } from 'react-icons/md';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import LOGO from '../assets/logo-maple.png';
-import { useCurrentUser } from '../store/authHooks';
-import { useShoppingCartStore } from '../store/shoppingCartStore';
-import { useAuthStore } from '../store/authStore';
-import api from '../utils/api';
+} from "@material-tailwind/react";
+import React from "react";
+import { MdShoppingCart } from "react-icons/md";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import LOGO from "../assets/logo-maple-white.png";
+import { useCurrentUser } from "../store/authHooks";
+import { useShoppingCartStore } from "../store/shoppingCartStore";
+import { useAuthStore } from "../store/authStore";
+import api from "../utils/api";
 
 export function TopNav() {
   const navigate = useNavigate();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   console.log(pathname);
   const [openNav, setOpenNav] = React.useState(false);
 
@@ -28,17 +28,17 @@ export function TopNav() {
 
   React.useEffect(() => {
     window.addEventListener(
-      'resize',
+      "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
 
   const handleSignout = async () => {
     try {
-      await api.post('/auth/logout');
+      await api.post("/auth/logout");
       logout();
-      navigate('/');
-      localStorage.removeItem('userInfo');
+      navigate("/");
+      localStorage.removeItem("userInfo");
     } catch (error) {
       console.error(error);
     }
@@ -75,15 +75,15 @@ export function TopNav() {
                 </div>
               )}
             </button>
-            {pathname === '/plans' && (
+            {pathname === "/plans" && (
               <Button
-              variant="text"
-              size="sm"
-              className="hidden lg:inline-block mr-2 text-btn"
-              onClick={() => navigate('/account')}
-            >
-              <span className=" text-white">Account</span>
-            </Button>
+                variant="text"
+                size="sm"
+                className="hidden lg:inline-block mr-2 text-btn"
+                onClick={() => navigate("/account")}
+              >
+                <span className=" text-white">Account</span>
+              </Button>
             )}
 
             <Button
@@ -100,7 +100,7 @@ export function TopNav() {
             variant="text"
             size="sm"
             className="hidden lg:inline-block mr-2 text-btn"
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
           >
             <span className=" text-black">Login</span>
           </Button>
@@ -156,7 +156,7 @@ export function TopNav() {
               onClick={handleSignout}
             >
               <span className=" text-white">
-                {isAuthenticated ? 'Logout' : 'Login'}
+                {isAuthenticated ? "Logout" : "Login"}
               </span>
             </Button>
             <Button
@@ -164,7 +164,7 @@ export function TopNav() {
               size="sm"
               fullWidth
               className="rounded-btn"
-              onClick={() => navigate('/account')}
+              onClick={() => navigate("/account")}
             >
               <span className="text-white">Account</span>
             </Button>
