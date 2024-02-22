@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
-import { TopNav } from "./top-nav";
-import { Footer } from "./footer";
+import { Outlet } from 'react-router-dom';
+import { TopNav } from './top-nav';
+import { Footer } from './footer';
 
 function HomeLayout() {
   return (

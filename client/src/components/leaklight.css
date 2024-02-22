@@ -68,9 +68,9 @@
   --shadow-lighter: 4px 4px 20px 20px rgba(0, 0, 0, 0.01);
   --transition: 0.3s;
   --transition-transform: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
-  --font-primary: "Inter", sans-serif;
-  --secondary-font: "Inter", sans-serif;
-  --font-awesome: "Font Awesome 5 Pro";
+  --font-primary: 'Inter', sans-serif;
+  --secondary-font: 'Inter', sans-serif;
+  --font-awesome: 'Font Awesome 5 Pro';
   --font-size-b1: 18px;
   --font-size-b2: 16px;
   --font-size-b3: 14px;
@@ -109,6 +109,7 @@
   top: -300px;
   right: -300px;
   bottom: auto;
+  z-index: 0;
   background-image: linear-gradient(
     45deg,
     var(--color-secondary),
@@ -116,6 +117,12 @@
   );
   filter: blur(100px);
 }
-.testtext {
-  color: white;
+
+@media (max-width: 768px) {
+  .rainbow-gradient-circle.theme-pink {
+    top: -200px;
+    right: -500px;
+    filter: blur(100px);
+    z-index: 0;
+  }
 }
