@@ -53,7 +53,7 @@ export function TopNav() {
   return (
     <Navbar className="mx-auto w-full py-2 px-4 lg:px-8 lg:py-4 shadow-none bg-transparent border-none">
       <div className="mx-auto flex items-center justify-between text-blue-gray-900">
-        <Link to="/">
+        <Link to="/plans">
           <img src={LOGO} className="w-[150px]" alt="MapleVistaa" />
         </Link>
         <div className="flex-grow" />
