@@ -32,7 +32,7 @@ function Index() {
     //     {renderStepContent()}
     //   </div>
     // </div>
-    <OtpInput />
+    <PasswordUpdated />
   );
 }
 
