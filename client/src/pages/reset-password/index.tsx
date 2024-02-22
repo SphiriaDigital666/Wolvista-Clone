@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import OtpInput from './components/otp';
-import PasswordUpdated from './components/password_updated';
-import ResetPassword from './components/reset_password';
-import ValidateEmail from './components/validate-emal';
+import React, { useState } from "react";
+import OtpInput from "./components/otp";
+import PasswordUpdated from "./components/password_updated";
+import ResetPassword from "./components/reset_password";
+import ValidateEmail from "./components/validate-emal";
 
 function Index() {
   const [step, setStep] = useState(1);
@@ -27,8 +27,8 @@ function Index() {
     }
   };
   return (
-    <div className='bg-[#f3f1fb] h-screen'>
-      <div className='flex flex-col items-center justify-center h-screen bg-[#f3f1fb]'>
+    <div className="h-screen">
+      <div className="flex flex-col items-center justify-center h-screen ">
         {renderStepContent()}
       </div>
     </div>
