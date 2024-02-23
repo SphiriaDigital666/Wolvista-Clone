@@ -8,6 +8,7 @@ import FORGOT_PASS_ICON from "../../../assets/passwordReset/password_updated.png
 // import LOGO from "../../../assets/IconGradient.png";
 import api from "../../../utils/api";
 import "../../../components/leaklight.css";
+import useOptStore from "../../../store/otpStore";
 
 interface ValidateEmailProps {
   handleNextStep: () => void;
@@ -18,6 +19,8 @@ const ValidateEmail: FC<ValidateEmailProps> = ({ handleNextStep }) => {
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [message, setMessage] = useState("");
+
+  const { setOpt} = useOptStore();
 
   useEffect(() => {
     const validateEmail = async () => {
@@ -42,8 +45,7 @@ const ValidateEmail: FC<ValidateEmailProps> = ({ handleNextStep }) => {
 
   const handlePwResetRequest = async () => {
     try {
-      const { data } = await api.post(`/email/send-otp`, { email });
-      console.log(data.message);
+      const { data } = await api.post(`/otp/send-otp`, { email });
 
       if (data.message === "Previous OTP is still valid") {
         // If the message is 'Previous OTP is still valid', go to the next step
@@ -51,6 +53,7 @@ const ValidateEmail: FC<ValidateEmailProps> = ({ handleNextStep }) => {
       } else {
         // If it's a different message, reset OTP value and proceed to the next step
         // dispatch(setOpt({ OTPValue: '', email }));
+        setOpt({ OTPValue: '', email })
         handleNextStep();
       }
     } catch (error: any) {

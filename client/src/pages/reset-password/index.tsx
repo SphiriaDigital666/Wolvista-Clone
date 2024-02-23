@@ -18,7 +18,6 @@ function Index() {
       case 2:
         return <OtpInput handleNextStep={() => handleNextStep()} />;
       case 3:
-        // @ts-ignore
         return <ResetPassword handleNextStep={() => handleNextStep()} />;
       case 4:
         return <PasswordUpdated />;

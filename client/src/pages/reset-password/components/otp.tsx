@@ -5,6 +5,7 @@ import React, { FC, useEffect, useState } from "react";
 import OTC from "../../../assets/passwordReset/otc.png";
 // import LOGO from '../../../assets/register/logo.png';
 import api from "../../../utils/api";
+import useOptStore from "../../../store/otpStore";
 
 interface OtpInputProps {
   handleNextStep: () => void;
@@ -13,7 +14,7 @@ interface OtpInputProps {
 const OtpInput: FC<OtpInputProps> = ({ handleNextStep }) => {
   const VERIFICATION_CODE_LENGTH = 5;
   // const { email } = useAppSelector((state: RootState) => state.otp);
-  const email = "";
+ const { email } = useOptStore();
   const TIMER_DURATION = 600;
 
   const [verificationCode, setVerificationCode] = useState(
@@ -65,7 +66,7 @@ const OtpInput: FC<OtpInputProps> = ({ handleNextStep }) => {
     const enteredCode = verificationCode.join("");
     const validateOTP = async () => {
       try {
-        const { data } = await api.post("/email/verify-otp", {
+        const { data } = await api.post("/otp/verify-otp", {
           email,
           userEnteredOTP: verificationCode.join(""),
         });
