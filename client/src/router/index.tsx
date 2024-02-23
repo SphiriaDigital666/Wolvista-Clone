@@ -1,77 +1,47 @@
-import { Fragment, Key, lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
-import HomeLayout from "../layout/home-layout";
-import EmptyLayout from "../layout/empty-layout";
+import { Fragment, Key, lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import EmptyLayout from '../layout/empty-layout';
+import HomeLayout from '../layout/home-layout';
 
-import SuspenseScreen from "./suspense-screen";
-import React from "react";
-import SubscriptionAndAuthWrapper from "./guards/SubscriptionAndAuthWrapper";
-import RequireAuth from "./guards/require-auth";
-// import AuthLayout from "../layout/auth-layout";
-// import useAuth from "../utils/context/auth-context";
+import React from 'react';
+import RequireAuth from './guards/require-auth';
+import SubscriptionAndAuthWrapper from './guards/SubscriptionAndAuthWrapper';
+import SuspenseScreen from './suspense-screen';
+import RedirectIfAuthenticated from './guards/redirect-if-authenticated';
 
 function Router() {
   const routes: any = [
     {
-      path: "/",
+      path: '/',
       layout: EmptyLayout,
-      routes: [{ element: lazy(() => import("../pages/sign-in")) }],
+      guard: RedirectIfAuthenticated,
+      routes: [{ element: lazy(() => import('../pages/sign-in')) }],
     },
     {
-      path: "/sign-up",
+      path: '/sign-up',
       layout: EmptyLayout,
-      routes: [{ element: lazy(() => import("../pages/sign-up")) }],
+      guard: RedirectIfAuthenticated,
+      routes: [{ element: lazy(() => import('../pages/sign-up')) }],
     },
     {
-      path: "/reset-password",
+      path: '/reset-password',
       layout: EmptyLayout,
-      routes: [{ element: lazy(() => import("../pages/reset-password")) }],
+      routes: [{ element: lazy(() => import('../pages/reset-password')) }],
     },
     {
-      path: "/account",
+      path: '/account',
       layout: HomeLayout,
       guard: SubscriptionAndAuthWrapper,
-      routes: [{ element: lazy(() => import("../pages/account")) }],
+      routes: [{ element: lazy(() => import('../pages/account')) }],
     },
     {
-      path: "/plans",
+      path: '/plans',
       layout: HomeLayout,
       guard: RequireAuth,
-      routes: [{ element: lazy(() => import("../pages/plans")) }],
+      routes: [{ element: lazy(() => import('../pages/plans')) }],
     },
 
-    { path: "*", element: lazy(() => import("./404")) },
-
-    // {
-    //   path: "/lesson",
-    //   layout: HomeLayout,
-    //   guard: AuthGuard,
-    //   routes: [
-    //     {
-    //       path: ":lid",
-    //       element: lazy(() => import("../pages/courses/lesson/index")),
-    //     },
-    //     { element: lazy(() => import("../pages/courses")) },
-    //   ],
-    // },
-
-    // {
-    //   path: "/auth",
-    //   layout: AuthLayout,
-    //   // guard: ReversGuard,
-    //   routes: [
-    //     {
-    //       path: "forget-password",
-    //       element: lazy(() => import("../pages/auth/forget-password")),
-    //     },
-    //     { path: "login", element: lazy(() => import("../pages/auth/login")) },
-    //     {
-    //       path: "register",
-    //       element: lazy(() => import("../pages/auth/register")),
-    //     },
-    //     { element: lazy(() => import("../pages/tutors")) },
-    //   ],
-    // },
+    { path: '*', element: lazy(() => import('./404')) },
   ];
 
   const routeRender = (
@@ -90,9 +60,9 @@ function Router() {
     const isIndex: boolean = route.path ? false : true;
     let props: any = {};
     if (isIndex) {
-      props["index"] = true;
+      props['index'] = true;
     } else {
-      props["path"] = route.path;
+      props['path'] = route.path;
     }
     return (
       <Route

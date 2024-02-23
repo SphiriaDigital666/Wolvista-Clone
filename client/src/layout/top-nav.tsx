@@ -1,5 +1,6 @@
 import {
   Button,
+  Collapse,
   IconButton,
   MobileNav,
   Navbar,
@@ -144,7 +145,7 @@ export function TopNav() {
           )}
         </IconButton>
       </div>
-      <MobileNav open={openNav}>
+      <Collapse open={openNav}>
         <div className='container mx-auto'>
           {navList}
           <div className='grid grid-cols-2 gap-2'>
@@ -159,18 +160,31 @@ export function TopNav() {
                 {isAuthenticated ? 'Logout' : 'Login'}
               </span>
             </Button>
-            <Button
-              variant='outlined'
-              size='sm'
-              fullWidth
-              className='rounded-btn'
-              onClick={() => navigate('/account')}
-            >
-              <span className='text-white'>Account</span>
-            </Button>
+            {pathname === '/account' && (
+              <Button
+                variant='outlined'
+                size='sm'
+                fullWidth
+                className='rounded-btn'
+                onClick={() => navigate('/plans')}
+              >
+                <span className='text-white'>Plans</span>
+              </Button>
+            )}
+            {pathname === '/plans' && (
+              <Button
+                variant='outlined'
+                size='sm'
+                fullWidth
+                className='rounded-btn'
+                onClick={() => navigate('/account')}
+              >
+                <span className='text-white'>Account</span>
+              </Button>
+            )}
           </div>
         </div>
-      </MobileNav>
+      </Collapse>
     </Navbar>
   );
 }

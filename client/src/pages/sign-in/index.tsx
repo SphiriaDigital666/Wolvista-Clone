@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@material-tailwind/react';
@@ -28,15 +28,6 @@ function AccountPage() {
     },
   });
 
-  // useEffect(() => {
-  //   if (user) {
-  //    if (user.subscription) {
-  //      navigate('/plans');
-  //    } else {
-  //      navigate('/account');
-  //    }
-  //   }
-  // }, [user, navigate]);
 
   const onSubmit = async (values: LoginFormValues) => {
     try {
