@@ -20,6 +20,9 @@ export const getConfig = async (req: Request, res: Response) => {
     expand: ['data.product'],
   });
 
+  // Sort prices.data array based on the price value in ascending order
+  prices.data.sort((a, b) => a.unit_amount - b.unit_amount);
+
   res.send({
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
     prices: prices.data,
