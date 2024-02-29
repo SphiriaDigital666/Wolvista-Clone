@@ -27,14 +27,9 @@ function Index() {
   };
   return (
     <div className="h-screen">
-      {/* <div className="flex flex-col items-center justify-center h-screen ">
+      <div className="flex flex-col items-center justify-center h-screen ">
         {renderStepContent()}
-      </div> */}
-
-      {/* <ValidateEmail /> */}
-
-      <ResetPassword />
-      {/* <PasswordUpdated /> */}
+      </div>
     </div>
   );
 }
